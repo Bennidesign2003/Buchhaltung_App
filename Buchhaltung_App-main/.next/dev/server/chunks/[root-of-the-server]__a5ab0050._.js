@@ -198,8 +198,21 @@ async function handler(req, res) {
                 taxId: taxId || null,
                 notes: notes || null
             }).run();
-            // Fetch the created supplier by using the last inserted rowid
-            const created = await __TURBOPACK__imported__module__$5b$project$5d2f$db$2f$index$2e$ts__$5b$api$5d$__$28$ecmascript$29$__["db"].select().from(__TURBOPACK__imported__module__$5b$project$5d2f$db$2f$schema$2e$ts__$5b$api$5d$__$28$ecmascript$29$__["suppliers"]).where((0, __TURBOPACK__imported__module__$5b$externals$5d2f$drizzle$2d$orm__$5b$external$5d$__$28$drizzle$2d$orm$2c$__esm_import$29$__["eq"])(__TURBOPACK__imported__module__$5b$project$5d2f$db$2f$schema$2e$ts__$5b$api$5d$__$28$ecmascript$29$__["suppliers"].id, result.lastInsertRowid)).get();
+            const insertedId = Number(result.lastInsertRowid || result.lastInsertRowid);
+            if (!Number.isFinite(insertedId)) {
+                return res.status(201).json({
+                    name,
+                    email,
+                    phone,
+                    address,
+                    city,
+                    postalCode,
+                    country,
+                    taxId,
+                    notes
+                });
+            }
+            const created = await __TURBOPACK__imported__module__$5b$project$5d2f$db$2f$index$2e$ts__$5b$api$5d$__$28$ecmascript$29$__["db"].select().from(__TURBOPACK__imported__module__$5b$project$5d2f$db$2f$schema$2e$ts__$5b$api$5d$__$28$ecmascript$29$__["suppliers"]).where((0, __TURBOPACK__imported__module__$5b$externals$5d2f$drizzle$2d$orm__$5b$external$5d$__$28$drizzle$2d$orm$2c$__esm_import$29$__["eq"])(__TURBOPACK__imported__module__$5b$project$5d2f$db$2f$schema$2e$ts__$5b$api$5d$__$28$ecmascript$29$__["suppliers"].id, insertedId)).get();
             return res.status(201).json(created);
         } catch (error) {
             console.error('Error creating supplier:', error);

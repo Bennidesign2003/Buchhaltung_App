@@ -35,6 +35,7 @@ type Item = (Invoice | Expense) & {
 export default function TransactionList({ refreshTrigger }: { refreshTrigger?: number }) {
   const [items, setItems] = useState<Item[]>([])
   const [loading, setLoading] = useState(true)
+  const [page, setPage] = useState(0)
 
   const fetchData = async () => {
     setLoading(true)
@@ -76,6 +77,14 @@ export default function TransactionList({ refreshTrigger }: { refreshTrigger?: n
     fetchData()
   }, [refreshTrigger])
 
+  useEffect(() => {
+    setPage(0)
+  }, [items.length])
+
+  const itemsPerPage = 10
+  const totalPages = Math.max(Math.ceil(items.length / itemsPerPage), 1)
+  const currentItems = items.slice(page * itemsPerPage, (page + 1) * itemsPerPage)
+
   if (loading) {
     return (
       <div className="bg-transparent p-0">
@@ -107,8 +116,9 @@ export default function TransactionList({ refreshTrigger }: { refreshTrigger?: n
           <p className="text-white/70">Noch keine Transaktionen erstellt.</p>
         </div>
       ) : (
-        <ul className="space-y-3">
-          {items.slice(0, 8).map(item => (
+        <>
+          <ul className="space-y-3">
+            {currentItems.map(item => (
             <li key={`${item.type}-${item.id}`} className="flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex items-center gap-3">
                 <div className="text-2xl">
@@ -137,8 +147,35 @@ export default function TransactionList({ refreshTrigger }: { refreshTrigger?: n
                 </div>
               </div>
             </li>
-          ))}
-        </ul>
+            ))}
+          </ul>
+          {items.length > itemsPerPage && (
+            <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-sm text-white/70">
+              <span>
+                Zeigt {currentItems.length} von {items.length} Einträgen
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setPage(prev => Math.max(prev - 1, 0))}
+                  disabled={page === 0}
+                  className="px-3 py-1 rounded-full border border-white/30 disabled:border-white/10 disabled:text-white/30"
+                >
+                  Vorherige 10
+                </button>
+                <span>
+                  Seite {page + 1} / {totalPages}
+                </span>
+                <button
+                  onClick={() => setPage(prev => Math.min(prev + 1, totalPages - 1))}
+                  disabled={page >= totalPages - 1}
+                  className="px-3 py-1 rounded-full border border-white/30 disabled:border-white/10 disabled:text-white/30"
+                >
+                  Nächste 10
+                </button>
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   )

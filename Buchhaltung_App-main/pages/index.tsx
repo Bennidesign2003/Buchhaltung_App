@@ -21,6 +21,8 @@ export default function Home() {
   const defaultOrder = ['chart', 'expenses-chart', 'invoices', 'expenses-dist', 'quick']
   // initialize with server-safe default; read saved order on client after mount to avoid hydration mismatch
   const [order, setOrder] = useState<string[]>(defaultOrder)
+  const glassPanel = 'rounded-3xl border border-white/20 bg-white/5 shadow-[0_30px_80px_rgba(15,23,42,0.55)] backdrop-blur-2xl'
+  const heroCardClass = 'rounded-3xl border border-white/30 bg-white/10 shadow-[0_25px_60px_rgba(15,23,42,0.45)] backdrop-blur-2xl px-5 py-6'
 
   useEffect(() => {
     try {
@@ -187,7 +189,11 @@ export default function Home() {
             }}
           >
             {hoverTarget === key && hoverPlacement === 'after' && (
-              <div className="h-full flex items-center justify-center text-xs text-blue-600 font-semibold">Hier platzieren</div>
+              <div
+                className={`${glassPanel} h-full flex items-center justify-center text-xs text-white/70 font-semibold border-dashed border-white/30`}
+              >
+                Hier platzieren
+              </div>
             )}
           </div>
         )}
@@ -277,17 +283,31 @@ export default function Home() {
       <div className="flex-1 p-8 space-y-6">
         <Header onNewInvoice={() => setIsModalOpen(true)} />
 
-        <div className="text-white">
-          <h1 className="text-3xl font-bold">Dashboard</h1>
-          <p className="text-sm text-white/80">Behalte Umsatz, Zahlen und Trends in einem Liquid-Glass-Cockpit im Blick.</p>
+        <div className="grid gap-4 md:grid-cols-3">
+          {(() => {
+            const activeModals = [isModalOpen, isCustomerModalOpen, isExpenseModalOpen].filter(Boolean).length
+            const heroCards = [
+              { label: 'Widgets', value: `${order.length}`, meta: 'Individuell anordnen' },
+              { label: 'Refresh-Zyklen', value: `${refreshKey}`, meta: 'Datenaktualisierungen' },
+              { label: 'Modale offen', value: `${activeModals}`, meta: 'Schnellaktionen' }
+            ]
+
+            return heroCards.map(card => (
+              <div key={card.label} className={heroCardClass}>
+                <p className="text-xs uppercase tracking-wider text-white/60">{card.label}</p>
+                <p className="text-3xl font-bold text-white mt-2">{card.value}</p>
+                <p className="text-xs text-white/60 mt-1">{card.meta}</p>
+              </div>
+            ))
+          })()}
         </div>
 
-        <div className="rounded-3xl border border-white/30 bg-white/10 shadow-[0_25px_70px_rgba(15,23,42,0.45)] backdrop-blur-2xl p-6">
+        <div className={`${glassPanel} p-6`}>
           <DashboardCards refreshTrigger={refreshKey} />
         </div>
 
         <div
-          className="rounded-3xl border border-white/20 bg-white/5 shadow-[0_30px_80px_rgba(15,23,42,0.55)] backdrop-blur-2xl p-6"
+          className={`${glassPanel} p-6`}
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -325,7 +345,11 @@ export default function Home() {
                             }
                           }}
                         >
-                          <div className="bg-gray-200 border-2 border-dashed border-gray-400 rounded h-40 flex items-center justify-center text-gray-600 font-semibold">Hier platzieren</div>
+                          <div
+                            className={`${glassPanel} h-40 flex items-center justify-center text-gray-200 text-xs font-semibold border-dashed border-white/40`}
+                          >
+                            Hier platzieren
+                          </div>
                         </div>
                       )
                     }

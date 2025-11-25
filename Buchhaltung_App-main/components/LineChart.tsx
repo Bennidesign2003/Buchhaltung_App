@@ -29,6 +29,11 @@ export default function LineChart({ refreshKey }: { refreshKey?: number } = {}) 
   const [values, setValues] = useState<number[]>([])
   const [loading, setLoading] = useState(false)
 
+  const chartTextColor = '#e2e8f0'
+  const chartGridColor = 'rgba(226,232,240,0.15)'
+  const tooltipBg = 'rgba(15,23,42,0.85)'
+  const tooltipBorder = 'rgba(226,232,240,0.35)'
+
   useEffect(() => {
     let mounted = true
     const load = async () => {
@@ -118,6 +123,11 @@ export default function LineChart({ refreshKey }: { refreshKey?: number } = {}) 
     plugins: {
       legend: { display: false },
       tooltip: {
+        backgroundColor: tooltipBg,
+        borderColor: tooltipBorder,
+        borderWidth: 1,
+        bodyColor: chartTextColor,
+        titleColor: chartTextColor,
         callbacks: {
           label: function (context: any) {
             try {
@@ -131,9 +141,15 @@ export default function LineChart({ refreshKey }: { refreshKey?: number } = {}) 
       }
     },
     scales: {
+      x: {
+        grid: { color: chartGridColor },
+        ticks: { color: chartTextColor }
+      },
       y: {
         min: 0,
+        grid: { color: chartGridColor },
         ticks: {
+          color: chartTextColor,
           stepSize: 1,
           callback: function (value: any) {
             try {

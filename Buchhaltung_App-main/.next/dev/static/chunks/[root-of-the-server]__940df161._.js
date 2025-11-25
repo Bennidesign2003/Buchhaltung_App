@@ -749,7 +749,7 @@ function Header({ onNewInvoice }) {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-sm text-gray-500",
-                        children: "Behalte Umsatz, Zahlen und Trends in einem Liquid-Glass-Cockpit im Blick."
+                        children: "Willkommen zurück, hier ist Ihr Finanzüberblick"
                     }, void 0, false, {
                         fileName: "[project]/components/Header.tsx",
                         lineNumber: 8,
@@ -772,14 +772,14 @@ function Header({ onNewInvoice }) {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/Header.tsx",
-                                lineNumber: 17,
+                                lineNumber: 14,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 children: "Neue Rechnung"
                             }, void 0, false, {
                                 fileName: "[project]/components/Header.tsx",
-                                lineNumber: 18,
+                                lineNumber: 15,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -794,12 +794,12 @@ function Header({ onNewInvoice }) {
                             className: "w-5 h-5 text-gray-600"
                         }, void 0, false, {
                             fileName: "[project]/components/Header.tsx",
-                            lineNumber: 22,
+                            lineNumber: 19,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Header.tsx",
-                        lineNumber: 21,
+                        lineNumber: 18,
                         columnNumber: 9
                     }, this)
                 ]
@@ -822,12 +822,12 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/components/SupplierModal.tsx [client] (ecmascript)", ((__turbopack_context__) => {
+"[project]/components/CustomerModal.tsx [client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
     "default",
-    ()=>SupplierModal
+    ()=>CustomerModal
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
@@ -837,7 +837,7 @@ var _s = __turbopack_context__.k.signature();
 'use client';
 ;
 ;
-function SupplierModal({ isOpen, onClose, onSave, initialData }) {
+function CustomerModal({ isOpen, onClose, onSave, initialData }) {
     _s();
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])({
         name: '',
@@ -846,12 +846,13 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
         address: '',
         city: '',
         postalCode: '',
-        country: '',
+        country: 'DE',
         taxId: '',
         notes: ''
     });
+    // sync form with initialData when modal opens or initialData changes
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "SupplierModal.useEffect": ()=>{
+        "CustomerModal.useEffect": ()=>{
             if (isOpen && initialData?.id) {
                 setFormData({
                     name: initialData.name || '',
@@ -860,11 +861,12 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                     address: initialData.address || '',
                     city: initialData.city || '',
                     postalCode: initialData.postalCode || '',
-                    country: initialData.country || '',
+                    country: initialData.country || 'DE',
                     taxId: initialData.taxId || '',
                     notes: initialData.notes || ''
                 });
             } else if (isOpen) {
+                // reset form for new customer
                 setFormData({
                     name: '',
                     email: '',
@@ -872,13 +874,13 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                     address: '',
                     city: '',
                     postalCode: '',
-                    country: '',
+                    country: 'DE',
                     taxId: '',
                     notes: ''
                 });
             }
         }
-    }["SupplierModal.useEffect"], [
+    }["CustomerModal.useEffect"], [
         isOpen,
         initialData
     ]);
@@ -900,7 +902,7 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                 address: '',
                 city: '',
                 postalCode: '',
-                country: '',
+                country: 'DE',
                 taxId: '',
                 notes: ''
             });
@@ -915,14 +917,14 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
             className: "bg-white rounded-lg shadow-lg max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "sticky top-0 flex items-center justify-between p-6 border-b bg-white",
+                    className: "flex items-center justify-between p-6 border-b sticky top-0 bg-white",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                             className: "text-xl font-semibold",
-                            children: isEditMode ? 'Lieferant bearbeiten' : 'Neuer Lieferant'
+                            children: isEditMode ? 'Kunde bearbeiten' : 'Neuer Kunde'
                         }, void 0, false, {
-                            fileName: "[project]/components/SupplierModal.tsx",
-                            lineNumber: 101,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 83,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -931,19 +933,19 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$XMarkIcon$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__XMarkIcon$3e$__["XMarkIcon"], {
                                 className: "w-5 h-5"
                             }, void 0, false, {
-                                fileName: "[project]/components/SupplierModal.tsx",
-                                lineNumber: 103,
+                                fileName: "[project]/components/CustomerModal.tsx",
+                                lineNumber: 85,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
-                            fileName: "[project]/components/SupplierModal.tsx",
-                            lineNumber: 102,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 84,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
-                    fileName: "[project]/components/SupplierModal.tsx",
-                    lineNumber: 100,
+                    fileName: "[project]/components/CustomerModal.tsx",
+                    lineNumber: 82,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -956,8 +958,8 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     className: "block text-sm font-medium mb-1",
                                     children: "Name *"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 109,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 91,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -969,24 +971,24 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500",
                                     required: true
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 110,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 92,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/SupplierModal.tsx",
-                            lineNumber: 108,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 90,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                     className: "block text-sm font-medium mb-1",
-                                    children: "Email"
+                                    children: "E-Mail"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 122,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 104,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -994,17 +996,17 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     name: "email",
                                     value: formData.email,
                                     onChange: handleChange,
-                                    placeholder: "info@example.com",
+                                    placeholder: "kontakt@example.com",
                                     className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 123,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 105,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/SupplierModal.tsx",
-                            lineNumber: 121,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 103,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1013,8 +1015,8 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     className: "block text-sm font-medium mb-1",
                                     children: "Telefon"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 134,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 116,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1025,14 +1027,14 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     placeholder: "+49 123 456789",
                                     className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 135,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 117,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/SupplierModal.tsx",
-                            lineNumber: 133,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 115,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1041,8 +1043,8 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     className: "block text-sm font-medium mb-1",
                                     children: "Adresse"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 146,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 128,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1053,14 +1055,14 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     placeholder: "Straße und Hausnummer",
                                     className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 147,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 129,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/SupplierModal.tsx",
-                            lineNumber: 145,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 127,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1072,8 +1074,8 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                             className: "block text-sm font-medium mb-1",
                                             children: "Stadt"
                                         }, void 0, false, {
-                                            fileName: "[project]/components/SupplierModal.tsx",
-                                            lineNumber: 159,
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 141,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1081,17 +1083,17 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                             name: "city",
                                             value: formData.city,
                                             onChange: handleChange,
-                                            placeholder: "Berlin",
+                                            placeholder: "Stadt",
                                             className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         }, void 0, false, {
-                                            fileName: "[project]/components/SupplierModal.tsx",
-                                            lineNumber: 160,
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 142,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 158,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 140,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1100,8 +1102,8 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                             className: "block text-sm font-medium mb-1",
                                             children: "PLZ"
                                         }, void 0, false, {
-                                            fileName: "[project]/components/SupplierModal.tsx",
-                                            lineNumber: 170,
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 152,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1109,23 +1111,23 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                             name: "postalCode",
                                             value: formData.postalCode,
                                             onChange: handleChange,
-                                            placeholder: "10115",
+                                            placeholder: "12345",
                                             className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         }, void 0, false, {
-                                            fileName: "[project]/components/SupplierModal.tsx",
-                                            lineNumber: 171,
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 153,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 169,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 151,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/SupplierModal.tsx",
-                            lineNumber: 157,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 139,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1134,26 +1136,66 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     className: "block text-sm font-medium mb-1",
                                     children: "Land"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 183,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 165,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                    type: "text",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                     name: "country",
                                     value: formData.country,
                                     onChange: handleChange,
-                                    placeholder: "Deutschland",
-                                    className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 184,
+                                    className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                            value: "DE",
+                                            children: "Deutschland"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 172,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                            value: "AT",
+                                            children: "Österreich"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 173,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                            value: "CH",
+                                            children: "Schweiz"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 174,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                            value: "FR",
+                                            children: "Frankreich"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 175,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                            value: "GB",
+                                            children: "Großbritannien"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 176,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 166,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/SupplierModal.tsx",
-                            lineNumber: 182,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 164,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1162,8 +1204,8 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     className: "block text-sm font-medium mb-1",
                                     children: "Steuernummer"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 195,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 181,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1171,17 +1213,17 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     name: "taxId",
                                     value: formData.taxId,
                                     onChange: handleChange,
-                                    placeholder: "DE 123 456 789",
+                                    placeholder: "DE123456789",
                                     className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 196,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 182,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/SupplierModal.tsx",
-                            lineNumber: 194,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 180,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1190,26 +1232,26 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     className: "block text-sm font-medium mb-1",
                                     children: "Notizen"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 207,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 193,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
                                     name: "notes",
                                     value: formData.notes,
                                     onChange: handleChange,
-                                    placeholder: "Weitere Informationen...",
+                                    placeholder: "Kundendetails...",
                                     rows: 3,
                                     className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 208,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 194,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/SupplierModal.tsx",
-                            lineNumber: 206,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 192,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1221,63 +1263,63 @@ function SupplierModal({ isOpen, onClose, onSave, initialData }) {
                                     className: "flex-1 px-4 py-2 border rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50",
                                     children: "Abbrechen"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 219,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 205,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     type: "submit",
                                     className: "flex-1 px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700",
-                                    children: isEditMode ? 'Speichern' : 'Lieferant erstellen'
+                                    children: isEditMode ? 'Speichern' : 'Kunde erstellen'
                                 }, void 0, false, {
-                                    fileName: "[project]/components/SupplierModal.tsx",
-                                    lineNumber: 222,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 208,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/SupplierModal.tsx",
-                            lineNumber: 218,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 204,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
-                    fileName: "[project]/components/SupplierModal.tsx",
-                    lineNumber: 107,
+                    fileName: "[project]/components/CustomerModal.tsx",
+                    lineNumber: 89,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
-            fileName: "[project]/components/SupplierModal.tsx",
-            lineNumber: 99,
+            fileName: "[project]/components/CustomerModal.tsx",
+            lineNumber: 81,
             columnNumber: 7
         }, this)
     }, void 0, false, {
-        fileName: "[project]/components/SupplierModal.tsx",
-        lineNumber: 98,
+        fileName: "[project]/components/CustomerModal.tsx",
+        lineNumber: 80,
         columnNumber: 5
     }, this);
 }
-_s(SupplierModal, "b0pIaN9X2JaLO62LFM3kmr1mWOI=");
-_c = SupplierModal;
+_s(CustomerModal, "BTbK9cX3KlB5/mB2OtbYXel8Z9k=");
+_c = CustomerModal;
 var _c;
-__turbopack_context__.k.register(_c, "SupplierModal");
+__turbopack_context__.k.register(_c, "CustomerModal");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/pages/suppliers.tsx [client] (ecmascript)", ((__turbopack_context__) => {
+"[project]/pages/customers.tsx [client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
     "default",
-    ()=>Suppliers
+    ()=>CustomersPage
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Sidebar$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/Sidebar.tsx [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/Header.tsx [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$SupplierModal$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/SupplierModal.tsx [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CustomerModal$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/CustomerModal.tsx [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$PencilIcon$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PencilIcon$3e$__ = __turbopack_context__.i("[project]/node_modules/@heroicons/react/24/outline/esm/PencilIcon.js [client] (ecmascript) <export default as PencilIcon>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$TrashIcon$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TrashIcon$3e$__ = __turbopack_context__.i("[project]/node_modules/@heroicons/react/24/outline/esm/TrashIcon.js [client] (ecmascript) <export default as TrashIcon>");
 ;
@@ -1287,123 +1329,124 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function Suppliers() {
+function CustomersPage() {
     _s();
-    const [suppliers, setSuppliers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [customers, setCustomers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const [isModalOpen, setIsModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [editingSupplier, setEditingSupplier] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [editingCustomer, setEditingCustomer] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [refreshKey, setRefreshKey] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(0);
-    const loadSuppliers = async ()=>{
+    const loadCustomers = async ()=>{
         setLoading(true);
         try {
-            const response = await fetch('/api/suppliers', {
+            const res = await fetch('/api/customers', {
                 cache: 'no-store'
             });
-            if (response.ok) {
-                const data = await response.json();
-                setSuppliers(data);
+            if (res.ok) {
+                const data = await res.json();
+                setCustomers(data);
             }
-        } catch (error) {
-            console.error('Error loading suppliers:', error);
+        } catch (e) {
+            console.error('Error loading customers:', e);
         } finally{
             setLoading(false);
         }
     };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "Suppliers.useEffect": ()=>{
-            loadSuppliers();
+        "CustomersPage.useEffect": ()=>{
+            loadCustomers();
         }
-    }["Suppliers.useEffect"], [
+    }["CustomersPage.useEffect"], [
         refreshKey
     ]);
     const summary = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useMemo"])({
-        "Suppliers.useMemo[summary]": ()=>{
-            const totalSuppliers = suppliers.length;
-            const withContact = suppliers.filter({
-                "Suppliers.useMemo[summary]": (s)=>s.email || s.phone
-            }["Suppliers.useMemo[summary]"]).length;
-            const withTaxId = suppliers.filter({
-                "Suppliers.useMemo[summary]": (s)=>s.taxId
-            }["Suppliers.useMemo[summary]"]).length;
+        "CustomersPage.useMemo[summary]": ()=>{
+            const totalCustomers = customers.length;
+            const withEmail = customers.filter({
+                "CustomersPage.useMemo[summary]": (customer)=>customer.email
+            }["CustomersPage.useMemo[summary]"]).length;
+            const withTaxId = customers.filter({
+                "CustomersPage.useMemo[summary]": (customer)=>customer.taxId
+            }["CustomersPage.useMemo[summary]"]).length;
             return {
-                totalSuppliers,
-                withContact,
+                totalCustomers,
+                withEmail,
                 withTaxId
             };
         }
-    }["Suppliers.useMemo[summary]"], [
-        suppliers
+    }["CustomersPage.useMemo[summary]"], [
+        customers
     ]);
-    const handleSaveSupplier = async (data)=>{
+    const handleSaveCustomer = async (data)=>{
         try {
-            const isEditing = Boolean(editingSupplier);
-            const method = isEditing ? 'PUT' : 'POST';
-            const body = isEditing ? {
+            const url = editingCustomer ? '/api/customers' : '/api/customers';
+            const method = editingCustomer ? 'PUT' : 'POST';
+            const payload = editingCustomer ? {
                 ...data,
-                id: editingSupplier?.id
+                id: editingCustomer.id
             } : data;
-            const response = await fetch('/api/suppliers', {
+            const response = await fetch(url, {
                 method,
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(body)
+                body: JSON.stringify(payload)
             });
             if (response.ok) {
-                const action = isEditing ? 'aktualisiert' : 'erstellt';
-                alert(`Lieferant "${data.name}" ${action}`);
+                alert(editingCustomer ? 'Kunde aktualisiert' : `Kunde "${data.name}" erstellt`);
+                setIsModalOpen(false);
+                setEditingCustomer(null);
                 setRefreshKey((prev)=>prev + 1);
-                closeModal();
             } else {
                 const err = await response.json();
-                alert(err.error || 'Fehler beim Speichern des Lieferanten');
+                alert(err.error || 'Fehler beim Speichern des Kunden');
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('Fehler beim Speichern des Lieferanten');
+            alert('Fehler beim Speichern des Kunden');
         }
-    };
-    const handleEdit = (supplier)=>{
-        setEditingSupplier(supplier);
-        setIsModalOpen(true);
     };
     const handleDelete = async (id)=>{
-        if (!confirm('Lieferant wirklich löschen?')) return;
-        try {
-            const response = await fetch(`/api/suppliers?id=${id}`, {
-                method: 'DELETE'
-            });
-            if (response.ok) {
-                alert('Lieferant gelöscht');
-                setRefreshKey((prev)=>prev + 1);
-            } else {
-                alert('Fehler beim Löschen des Lieferanten');
+        if (confirm('Kunden wirklich löschen?')) {
+            try {
+                const res = await fetch(`/api/customers?id=${id}`, {
+                    method: 'DELETE'
+                });
+                if (res.ok) {
+                    alert('Kunde gelöscht');
+                    setRefreshKey((prev)=>prev + 1);
+                } else {
+                    alert('Fehler beim Löschen');
+                }
+            } catch (e) {
+                console.error('Error:', e);
+                alert('Fehler beim Löschen');
             }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Fehler beim Löschen des Lieferanten');
         }
+    };
+    const handleEdit = (customer)=>{
+        setEditingCustomer(customer);
+        setIsModalOpen(true);
     };
     const closeModal = ()=>{
         setIsModalOpen(false);
-        setEditingSupplier(null);
+        setEditingCustomer(null);
     };
     const heroCards = [
         {
-            label: 'Lieferanten gesamt',
-            value: summary.totalSuppliers,
+            label: 'Kunden gesamt',
+            value: summary.totalCustomers,
             meta: 'Einträge insgesamt'
         },
         {
-            label: 'Mit Kontakt',
-            value: summary.withContact,
-            meta: 'Email oder Telefon'
+            label: 'Mit E-Mail',
+            value: summary.withEmail,
+            meta: 'Kontaktinformationen'
         },
         {
             label: 'Mit Steuernummer',
             value: summary.withTaxId,
-            meta: 'Steuerdaten vorhanden'
+            meta: 'Steuerinformationen'
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1413,18 +1456,16 @@ function Suppliers() {
         },
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Sidebar$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                fileName: "[project]/pages/suppliers.tsx",
-                lineNumber: 125,
+                fileName: "[project]/pages/customers.tsx",
+                lineNumber: 122,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex-1 p-8 space-y-6",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                        onNewInvoice: ()=>setIsModalOpen(true)
-                    }, void 0, false, {
-                        fileName: "[project]/pages/suppliers.tsx",
-                        lineNumber: 128,
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 125,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1432,24 +1473,24 @@ function Suppliers() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                 className: "text-3xl font-bold",
-                                children: "Lieferanten"
+                                children: "Kunden"
                             }, void 0, false, {
-                                fileName: "[project]/pages/suppliers.tsx",
-                                lineNumber: 131,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 128,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-sm text-white/80",
-                                children: "Verwalte alle Lieferanten an einem Ort mit verstärkter Übersicht"
+                                children: "Alle Kunden mit Kontakten, Steuernummern und Aktionen in einem Glas-Cockpit"
                             }, void 0, false, {
-                                fileName: "[project]/pages/suppliers.tsx",
-                                lineNumber: 132,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 129,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/pages/suppliers.tsx",
-                        lineNumber: 130,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 127,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1461,35 +1502,35 @@ function Suppliers() {
                                         className: "text-xs uppercase tracking-wider text-white/60",
                                         children: card.label
                                     }, void 0, false, {
-                                        fileName: "[project]/pages/suppliers.tsx",
-                                        lineNumber: 141,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 138,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-3xl font-bold text-white mt-2",
                                         children: card.value
                                     }, void 0, false, {
-                                        fileName: "[project]/pages/suppliers.tsx",
-                                        lineNumber: 142,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 139,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-xs text-white/60 mt-1",
                                         children: card.meta
                                     }, void 0, false, {
-                                        fileName: "[project]/pages/suppliers.tsx",
-                                        lineNumber: 143,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 140,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, card.label, true, {
-                                fileName: "[project]/pages/suppliers.tsx",
-                                lineNumber: 137,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 134,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
-                        fileName: "[project]/pages/suppliers.tsx",
-                        lineNumber: 135,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 132,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1499,77 +1540,74 @@ function Suppliers() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm font-semibold uppercase tracking-wider text-white/70",
-                                        children: "Lieferantenliste"
+                                        children: "Kundenliste"
                                     }, void 0, false, {
-                                        fileName: "[project]/pages/suppliers.tsx",
-                                        lineNumber: 150,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 147,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-xs text-white/60",
                                         children: [
-                                            suppliers.length,
+                                            customers.length,
                                             " Einträge geladen"
                                         ]
                                     }, void 0, true, {
-                                        fileName: "[project]/pages/suppliers.tsx",
-                                        lineNumber: 151,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 148,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
-                                fileName: "[project]/pages/suppliers.tsx",
-                                lineNumber: 149,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 146,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: ()=>{
-                                    setEditingSupplier(null);
-                                    setIsModalOpen(true);
-                                },
+                                onClick: ()=>setIsModalOpen(true),
                                 className: "rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 px-5 py-3 text-sm font-semibold text-white shadow-[0_20px_50px_rgba(15,23,42,0.5)]",
-                                children: "+ Neuer Lieferant"
+                                children: "+ Neuer Kunde"
                             }, void 0, false, {
-                                fileName: "[project]/pages/suppliers.tsx",
-                                lineNumber: 153,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 150,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/pages/suppliers.tsx",
-                        lineNumber: 148,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 145,
                         columnNumber: 9
                     }, this),
                     loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "rounded-3xl border border-white/30 bg-white/10 shadow-[0_30px_80px_rgba(15,23,42,0.55)] backdrop-blur-2xl p-10 text-center text-white/80",
                         children: "Lädt..."
                     }, void 0, false, {
-                        fileName: "[project]/pages/suppliers.tsx",
-                        lineNumber: 165,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 159,
                         columnNumber: 11
-                    }, this) : suppliers.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    }, this) : customers.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "rounded-3xl border border-white/30 bg-white/10 shadow-[0_30px_80px_rgba(15,23,42,0.55)] backdrop-blur-2xl p-10 text-center text-white/80 space-y-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                children: "Noch keine Lieferanten erfasst."
+                                children: "Noch keine Kunden vorhanden."
                             }, void 0, false, {
-                                fileName: "[project]/pages/suppliers.tsx",
-                                lineNumber: 170,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 164,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>setIsModalOpen(true),
                                 className: "rounded-full bg-white/10 px-5 py-2 text-sm font-semibold text-white shadow-[0_15px_40px_rgba(15,23,42,0.45)]",
-                                children: "Ersten Lieferanten hinzufügen"
+                                children: "Ersten Kunden hinzufügen"
                             }, void 0, false, {
-                                fileName: "[project]/pages/suppliers.tsx",
-                                lineNumber: 171,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 165,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/pages/suppliers.tsx",
-                        lineNumber: 169,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 163,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "rounded-3xl border border-white/20 bg-white/5 shadow-[0_30px_80px_rgba(15,23,42,0.55)] backdrop-blur-2xl",
@@ -1584,228 +1622,246 @@ function Suppliers() {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
                                                 children: "NAME"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/suppliers.tsx",
-                                                lineNumber: 183,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 177,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
                                                 children: "EMAIL"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/suppliers.tsx",
-                                                lineNumber: 184,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 178,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
                                                 children: "TELEFON"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/suppliers.tsx",
-                                                lineNumber: 185,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 179,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
                                                 children: "STADT"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/suppliers.tsx",
-                                                lineNumber: 186,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 180,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
                                                 children: "LAND"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/suppliers.tsx",
-                                                lineNumber: 187,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 181,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
                                                 children: "STEUERNUMMER"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/suppliers.tsx",
-                                                lineNumber: 188,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 182,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
                                                 children: "AKTIONEN"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/suppliers.tsx",
-                                                lineNumber: 189,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 183,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
-                                        fileName: "[project]/pages/suppliers.tsx",
-                                        lineNumber: 182,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 176,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
-                                    fileName: "[project]/pages/suppliers.tsx",
-                                    lineNumber: 181,
+                                    fileName: "[project]/pages/customers.tsx",
+                                    lineNumber: 175,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                                    children: suppliers.map((supplier, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                    children: customers.map((customer, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                             className: `transition-colors ${idx % 2 === 0 ? 'bg-white/10' : 'bg-white/5'}`,
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 text-white font-semibold",
-                                                    children: supplier.name
+                                                    children: customer.name
                                                 }, void 0, false, {
-                                                    fileName: "[project]/pages/suppliers.tsx",
-                                                    lineNumber: 198,
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 189,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 text-sm text-white/70",
-                                                    children: supplier.email || '-'
+                                                    children: customer.email || '–'
                                                 }, void 0, false, {
-                                                    fileName: "[project]/pages/suppliers.tsx",
-                                                    lineNumber: 199,
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 190,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 text-sm text-white/70",
-                                                    children: supplier.phone || '-'
+                                                    children: customer.phone || '–'
                                                 }, void 0, false, {
-                                                    fileName: "[project]/pages/suppliers.tsx",
-                                                    lineNumber: 200,
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 191,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 text-sm text-white/70",
-                                                    children: supplier.city || '-'
+                                                    children: customer.city || '–'
                                                 }, void 0, false, {
-                                                    fileName: "[project]/pages/suppliers.tsx",
-                                                    lineNumber: 201,
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 192,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 text-sm text-white/70",
-                                                    children: supplier.country || '-'
+                                                    children: customer.country || '–'
                                                 }, void 0, false, {
-                                                    fileName: "[project]/pages/suppliers.tsx",
-                                                    lineNumber: 202,
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 193,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 text-sm text-white/70",
-                                                    children: supplier.taxId || '-'
+                                                    children: customer.taxId || '–'
                                                 }, void 0, false, {
-                                                    fileName: "[project]/pages/suppliers.tsx",
-                                                    lineNumber: 203,
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 194,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 text-sm space-x-3 text-white/80",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                            onClick: ()=>handleEdit(supplier),
+                                                            onClick: ()=>handleEdit(customer),
                                                             className: "inline-flex items-center gap-1 hover:text-white",
-                                                            title: "Bearbeiten",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$PencilIcon$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__PencilIcon$3e$__["PencilIcon"], {
                                                                     className: "w-4 h-4"
                                                                 }, void 0, false, {
-                                                                    fileName: "[project]/pages/suppliers.tsx",
-                                                                    lineNumber: 210,
+                                                                    fileName: "[project]/pages/customers.tsx",
+                                                                    lineNumber: 200,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 "Bearbeiten"
                                                             ]
                                                         }, void 0, true, {
-                                                            fileName: "[project]/pages/suppliers.tsx",
-                                                            lineNumber: 205,
+                                                            fileName: "[project]/pages/customers.tsx",
+                                                            lineNumber: 196,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                            onClick: ()=>handleDelete(supplier.id),
+                                                            onClick: ()=>handleDelete(customer.id),
                                                             className: "inline-flex items-center gap-1 text-rose-300 hover:text-rose-100",
-                                                            title: "Löschen",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$TrashIcon$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TrashIcon$3e$__["TrashIcon"], {
                                                                     className: "w-4 h-4"
                                                                 }, void 0, false, {
-                                                                    fileName: "[project]/pages/suppliers.tsx",
-                                                                    lineNumber: 218,
+                                                                    fileName: "[project]/pages/customers.tsx",
+                                                                    lineNumber: 207,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 "Löschen"
                                                             ]
                                                         }, void 0, true, {
-                                                            fileName: "[project]/pages/suppliers.tsx",
-                                                            lineNumber: 213,
+                                                            fileName: "[project]/pages/customers.tsx",
+                                                            lineNumber: 203,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
-                                                    fileName: "[project]/pages/suppliers.tsx",
-                                                    lineNumber: 204,
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 195,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
-                                        }, supplier.id, true, {
-                                            fileName: "[project]/pages/suppliers.tsx",
-                                            lineNumber: 194,
+                                        }, customer.id, true, {
+                                            fileName: "[project]/pages/customers.tsx",
+                                            lineNumber: 188,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
-                                    fileName: "[project]/pages/suppliers.tsx",
-                                    lineNumber: 192,
+                                    fileName: "[project]/pages/customers.tsx",
+                                    lineNumber: 186,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/pages/suppliers.tsx",
-                            lineNumber: 180,
+                            fileName: "[project]/pages/customers.tsx",
+                            lineNumber: 174,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
-                        fileName: "[project]/pages/suppliers.tsx",
-                        lineNumber: 179,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 173,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "[project]/pages/suppliers.tsx",
-                lineNumber: 127,
+                fileName: "[project]/pages/customers.tsx",
+                lineNumber: 124,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$SupplierModal$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CustomerModal$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                 isOpen: isModalOpen,
                 onClose: closeModal,
-                onSave: handleSaveSupplier,
-                initialData: editingSupplier
+                onSave: handleSaveCustomer,
+                initialData: editingCustomer
             }, void 0, false, {
-                fileName: "[project]/pages/suppliers.tsx",
-                lineNumber: 230,
+                fileName: "[project]/pages/customers.tsx",
+                lineNumber: 219,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
-        fileName: "[project]/pages/suppliers.tsx",
-        lineNumber: 119,
+        fileName: "[project]/pages/customers.tsx",
+        lineNumber: 116,
         columnNumber: 5
     }, this);
 }
-_s(Suppliers, "XKEjsla++8heQYe3g3ZYCv0jc4A=");
-_c = Suppliers;
+_s(CustomersPage, "raWtb1UmAdDKgBdjd2hSbqd2YA4=");
+_c = CustomersPage;
 var _c;
-__turbopack_context__.k.register(_c, "Suppliers");
+__turbopack_context__.k.register(_c, "CustomersPage");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[next]/entry/page-loader.ts { PAGE => \"[project]/pages/suppliers.tsx [client] (ecmascript)\" } [client] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"[project]/pages/index.tsx [client] (ecmascript) <locals>", ((__turbopack_context__) => {
+"use strict";
 
-const PAGE_PATH = "/suppliers";
+__turbopack_context__.s([]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$customers$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/pages/customers.tsx [client] (ecmascript)");
+;
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/pages/index.tsx [client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$customers$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$index$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/pages/index.tsx [client] (ecmascript) <locals>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$customers$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/pages/customers.tsx [client] (ecmascript)");
+}),
+"[next]/entry/page-loader.ts { PAGE => \"[project]/pages/index.tsx [client] (ecmascript)\" } [client] (ecmascript)", ((__turbopack_context__, module, exports) => {
+
+const PAGE_PATH = "/";
 (window.__NEXT_P = window.__NEXT_P || []).push([
     PAGE_PATH,
     ()=>{
-        return __turbopack_context__.r("[project]/pages/suppliers.tsx [client] (ecmascript)");
+        return __turbopack_context__.r("[project]/pages/index.tsx [client] (ecmascript)");
     }
 ]);
 // @ts-expect-error module.hot exists
@@ -1818,11 +1874,11 @@ if (module.hot) {
     });
 }
 }),
-"[hmr-entry]/hmr-entry.js { ENTRY => \"[project]/pages/suppliers\" }", ((__turbopack_context__) => {
+"[hmr-entry]/hmr-entry.js { ENTRY => \"[project]/pages/index\" }", ((__turbopack_context__) => {
 "use strict";
 
-__turbopack_context__.r("[next]/entry/page-loader.ts { PAGE => \"[project]/pages/suppliers.tsx [client] (ecmascript)\" } [client] (ecmascript)");
+__turbopack_context__.r("[next]/entry/page-loader.ts { PAGE => \"[project]/pages/index.tsx [client] (ecmascript)\" } [client] (ecmascript)");
 }),
 ]);
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__cb8c744d._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__940df161._.js.map

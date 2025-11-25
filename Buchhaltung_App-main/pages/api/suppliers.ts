@@ -27,11 +27,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         })
         .run()
 
-      // Fetch the created supplier by using the last inserted rowid
+      const insertedId = Number(result.lastInsertRowid || result.lastInsertRowid)
+      if (!Number.isFinite(insertedId)) {
+        return res.status(201).json({
+          name,
+          email,
+          phone,
+          address,
+          city,
+          postalCode,
+          country,
+          taxId,
+          notes
+        })
+      }
+
       const created = await db
         .select()
         .from(suppliers)
-        .where(eq(suppliers.id, result.lastInsertRowid as number))
+        .where(eq(suppliers.id, insertedId))
         .get()
 
       return res.status(201).json(created)

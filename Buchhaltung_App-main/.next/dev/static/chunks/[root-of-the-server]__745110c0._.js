@@ -749,7 +749,7 @@ function Header({ onNewInvoice }) {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-sm text-gray-500",
-                        children: "Willkommen zurück, hier ist Ihr Finanzüberblick"
+                        children: "Behalte Umsatz, Zahlen und Trends in einem Liquid-Glass-Cockpit im Blick."
                     }, void 0, false, {
                         fileName: "[project]/components/Header.tsx",
                         lineNumber: 8,
@@ -772,14 +772,14 @@ function Header({ onNewInvoice }) {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/Header.tsx",
-                                lineNumber: 14,
+                                lineNumber: 17,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 children: "Neue Rechnung"
                             }, void 0, false, {
                                 fileName: "[project]/components/Header.tsx",
-                                lineNumber: 15,
+                                lineNumber: 18,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -794,12 +794,12 @@ function Header({ onNewInvoice }) {
                             className: "w-5 h-5 text-gray-600"
                         }, void 0, false, {
                             fileName: "[project]/components/Header.tsx",
-                            lineNumber: 19,
+                            lineNumber: 22,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Header.tsx",
-                        lineNumber: 18,
+                        lineNumber: 21,
                         columnNumber: 9
                     }, this)
                 ]

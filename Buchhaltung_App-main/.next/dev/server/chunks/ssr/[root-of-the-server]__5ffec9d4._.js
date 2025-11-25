@@ -289,7 +289,7 @@ function Header({ onNewInvoice }) {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                         className: "text-sm text-gray-500",
-                        children: "Behalte Umsatz, Zahlen und Trends in einem Liquid-Glass-Cockpit im Blick."
+                        children: "Willkommen zurück, hier ist Ihr Finanzüberblick"
                     }, void 0, false, {
                         fileName: "[project]/components/Header.tsx",
                         lineNumber: 8,
@@ -312,14 +312,14 @@ function Header({ onNewInvoice }) {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/Header.tsx",
-                                lineNumber: 17,
+                                lineNumber: 14,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
                                 children: "Neue Rechnung"
                             }, void 0, false, {
                                 fileName: "[project]/components/Header.tsx",
-                                lineNumber: 18,
+                                lineNumber: 15,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -334,12 +334,12 @@ function Header({ onNewInvoice }) {
                             className: "w-5 h-5 text-gray-600"
                         }, void 0, false, {
                             fileName: "[project]/components/Header.tsx",
-                            lineNumber: 22,
+                            lineNumber: 19,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Header.tsx",
-                        lineNumber: 21,
+                        lineNumber: 18,
                         columnNumber: 9
                     }, this)
                 ]
@@ -356,12 +356,12 @@ function Header({ onNewInvoice }) {
     }, this);
 }
 }),
-"[project]/components/InvoiceModal.tsx [ssr] (ecmascript)", ((__turbopack_context__) => {
+"[project]/components/CustomerModal.tsx [ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
     "default",
-    ()=>InvoiceModal
+    ()=>CustomerModal
 ]);
 var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react [external] (react, cjs)");
@@ -370,20 +370,50 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$
 ;
 ;
 ;
-const createDefaultFormData = ()=>({
-        title: '',
-        customer: '',
-        amount: '',
-        taxRate: '19',
-        dueDate: '',
-        description: '',
-        status: 'open'
+function CustomerModal({ isOpen, onClose, onSave, initialData }) {
+    const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])({
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        city: '',
+        postalCode: '',
+        country: 'DE',
+        taxId: '',
+        notes: ''
     });
-function InvoiceModal({ isOpen, onClose, onSave, initialData }) {
-    const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(createDefaultFormData());
-    const [customers, setCustomers] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]);
-    const [customersLoading, setCustomersLoading] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(true);
-    const [customersError, setCustomersError] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])('');
+    // sync form with initialData when modal opens or initialData changes
+    (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
+        if (isOpen && initialData?.id) {
+            setFormData({
+                name: initialData.name || '',
+                email: initialData.email || '',
+                phone: initialData.phone || '',
+                address: initialData.address || '',
+                city: initialData.city || '',
+                postalCode: initialData.postalCode || '',
+                country: initialData.country || 'DE',
+                taxId: initialData.taxId || '',
+                notes: initialData.notes || ''
+            });
+        } else if (isOpen) {
+            // reset form for new customer
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                address: '',
+                city: '',
+                postalCode: '',
+                country: 'DE',
+                taxId: '',
+                notes: ''
+            });
+        }
+    }, [
+        isOpen,
+        initialData
+    ]);
     const handleChange = (e)=>{
         const { name, value } = e.target;
         setFormData((prev)=>({
@@ -391,82 +421,40 @@ function InvoiceModal({ isOpen, onClose, onSave, initialData }) {
                 [name]: value
             }));
     };
-    (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
-        if (isOpen) {
-            const baseData = initialData ? {
-                ...initialData
-            } : createDefaultFormData();
-            setFormData({
-                ...baseData,
-                status: baseData.status === 'paid' ? 'paid' : 'open'
-            });
-        }
-    }, [
-        isOpen,
-        initialData
-    ]);
-    (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
-        let active = true;
-        const loadCustomers = async ()=>{
-            setCustomersLoading(true);
-            setCustomersError('');
-            try {
-                const response = await fetch('/api/customers');
-                if (!response.ok) throw new Error('Kunden konnten nicht geladen werden');
-                const data = await response.json();
-                if (active) {
-                    setCustomers(Array.isArray(data) ? data : []);
-                }
-            } catch (error) {
-                if (active) {
-                    setCustomers([]);
-                    setCustomersError('Kunden konnten nicht geladen werden');
-                }
-            } finally{
-                if (active) setCustomersLoading(false);
-            }
-        };
-        loadCustomers();
-        return ()=>{
-            active = false;
-        };
-    }, []);
     const handleSubmit = (e)=>{
         e.preventDefault();
-        if (formData.customer && formData.amount) {
-            const now = new Date();
-            const dueDateRaw = formData.dueDate ? new Date(formData.dueDate) : null;
-            const dueDateEnd = dueDateRaw ? new Date(dueDateRaw) : null;
-            if (dueDateEnd) dueDateEnd.setHours(23, 59, 59, 999);
-            const dueDateIsOverdue = dueDateEnd ? dueDateEnd.getTime() < now.getTime() : false;
-            const isPaid = formData.status === 'paid';
-            const computedStatus = isPaid ? 'paid' : dueDateIsOverdue ? 'overdue' : 'open';
-            onSave({
-                ...formData,
-                status: computedStatus
+        if (formData.name) {
+            onSave(formData);
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                address: '',
+                city: '',
+                postalCode: '',
+                country: 'DE',
+                taxId: '',
+                notes: ''
             });
-            setFormData(createDefaultFormData());
             onClose();
         }
     };
     if (!isOpen) return null;
-    const taxAmount = parseFloat(formData.amount || '0') * (parseFloat(formData.taxRate) / 100);
-    const total = parseFloat(formData.amount || '0') + taxAmount;
-    const isEditing = Boolean(formData.id);
+    const isEditMode = initialData?.id;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
         className: "fixed inset-0 bg-black/50 flex items-center justify-center z-50",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-            className: "bg-white rounded-lg shadow-lg max-w-md w-full mx-4",
+            className: "bg-white rounded-lg shadow-lg max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                    className: "flex items-center justify-between p-6 border-b",
+                    className: "flex items-center justify-between p-6 border-b sticky top-0 bg-white",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
                             className: "text-xl font-semibold",
-                            children: isEditing ? 'Rechnung bearbeiten' : 'Neue Rechnung'
+                            children: isEditMode ? 'Kunde bearbeiten' : 'Neuer Kunde'
                         }, void 0, false, {
-                            fileName: "[project]/components/InvoiceModal.tsx",
-                            lineNumber: 118,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 83,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -475,19 +463,19 @@ function InvoiceModal({ isOpen, onClose, onSave, initialData }) {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$XMarkIcon$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__XMarkIcon$3e$__["XMarkIcon"], {
                                 className: "w-5 h-5"
                             }, void 0, false, {
-                                fileName: "[project]/components/InvoiceModal.tsx",
-                                lineNumber: 120,
+                                fileName: "[project]/components/CustomerModal.tsx",
+                                lineNumber: 85,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
-                            fileName: "[project]/components/InvoiceModal.tsx",
-                            lineNumber: 119,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 84,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
-                    fileName: "[project]/components/InvoiceModal.tsx",
-                    lineNumber: 117,
+                    fileName: "[project]/components/CustomerModal.tsx",
+                    lineNumber: 82,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("form", {
@@ -498,372 +486,302 @@ function InvoiceModal({ isOpen, onClose, onSave, initialData }) {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
                                     className: "block text-sm font-medium mb-1",
-                                    children: "Kunde"
+                                    children: "Name *"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 126,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("select", {
-                                    name: "customer",
-                                    value: formData.customer,
-                                    onChange: handleChange,
-                                    disabled: customersLoading || customers.length === 0,
-                                    className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500",
-                                    required: true,
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
-                                            value: "",
-                                            disabled: true,
-                                            children: customersLoading ? 'Kunden werden geladen…' : customers.length ? 'Bitte Kunden wählen' : 'Keine Kunden vorhanden'
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 135,
-                                            columnNumber: 15
-                                        }, this),
-                                        customers.map((customer)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
-                                                value: customer.name,
-                                                children: customer.name
-                                            }, customer.id, false, {
-                                                fileName: "[project]/components/InvoiceModal.tsx",
-                                                lineNumber: 139,
-                                                columnNumber: 17
-                                            }, this))
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 127,
-                                    columnNumber: 13
-                                }, this),
-                                customersError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
-                                    className: "text-xs text-red-500 mt-1",
-                                    children: customersError
-                                }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 144,
-                                    columnNumber: 32
-                                }, this),
-                                !customersLoading && customers.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
-                                    className: "text-xs text-gray-500 mt-1",
-                                    children: "Erstelle zuerst einen Kunden, damit du eine Rechnung zuweisen kannst."
-                                }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 146,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/InvoiceModal.tsx",
-                            lineNumber: 125,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
-                                    className: "block text-sm font-medium mb-1",
-                                    children: "Titel"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 151,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 91,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
                                     type: "text",
-                                    name: "title",
-                                    value: formData.title,
+                                    name: "name",
+                                    value: formData.name,
                                     onChange: handleChange,
-                                    placeholder: "z.B. Webdesign März",
+                                    placeholder: "z.B. Müller GmbH",
                                     className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500",
                                     required: true
                                 }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 152,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 92,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/InvoiceModal.tsx",
-                            lineNumber: 150,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 90,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
                                     className: "block text-sm font-medium mb-1",
-                                    children: "Betrag (€)"
+                                    children: "E-Mail"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 164,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 104,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
-                                    type: "number",
-                                    name: "amount",
-                                    value: formData.amount,
+                                    type: "email",
+                                    name: "email",
+                                    value: formData.email,
                                     onChange: handleChange,
-                                    placeholder: "0.00",
-                                    step: "0.01",
-                                    className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500",
-                                    required: true
-                                }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 165,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/InvoiceModal.tsx",
-                            lineNumber: 163,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
-                                    className: "block text-sm font-medium mb-1",
-                                    children: "Steuersatz (%)"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 178,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("select", {
-                                    name: "taxRate",
-                                    value: formData.taxRate,
-                                    onChange: handleChange,
-                                    className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
-                                            value: "0",
-                                            children: "Keine Steuer"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 185,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
-                                            value: "7",
-                                            children: "7%"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 186,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
-                                            value: "19",
-                                            children: "19%"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 187,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 179,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/InvoiceModal.tsx",
-                            lineNumber: 177,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
-                                    className: "block text-sm font-medium mb-1",
-                                    children: "Fälligkeitsdatum"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 192,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
-                                    type: "date",
-                                    name: "dueDate",
-                                    value: formData.dueDate,
-                                    onChange: handleChange,
+                                    placeholder: "kontakt@example.com",
                                     className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 193,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 105,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/InvoiceModal.tsx",
-                            lineNumber: 191,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 103,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
                                     className: "block text-sm font-medium mb-1",
-                                    children: "Status"
+                                    children: "Telefon"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 203,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 116,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("select", {
-                                    name: "status",
-                                    value: formData.status,
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
+                                    type: "tel",
+                                    name: "phone",
+                                    value: formData.phone,
                                     onChange: handleChange,
-                                    className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500",
+                                    placeholder: "+49 123 456789",
+                                    className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 117,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 115,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
+                                    className: "block text-sm font-medium mb-1",
+                                    children: "Adresse"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 128,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
+                                    type: "text",
+                                    name: "address",
+                                    value: formData.address,
+                                    onChange: handleChange,
+                                    placeholder: "Straße und Hausnummer",
+                                    className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 129,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 127,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                            className: "grid grid-cols-2 gap-3",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
-                                            value: "open",
-                                            children: "Offen"
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
+                                            className: "block text-sm font-medium mb-1",
+                                            children: "Stadt"
                                         }, void 0, false, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 210,
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 141,
                                             columnNumber: 15
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
-                                            value: "paid",
-                                            children: "Bezahlt"
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
+                                            type: "text",
+                                            name: "city",
+                                            value: formData.city,
+                                            onChange: handleChange,
+                                            placeholder: "Stadt",
+                                            className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         }, void 0, false, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 211,
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 142,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 204,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 140,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
-                                    className: "text-xs text-gray-500 mt-1",
-                                    children: 'Der Status wird automatisch auf „Überfällig" gesetzt, wenn das Fälligkeitsdatum überschritten ist.'
-                                }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 213,
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
+                                            className: "block text-sm font-medium mb-1",
+                                            children: "PLZ"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 152,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
+                                            type: "text",
+                                            name: "postalCode",
+                                            value: formData.postalCode,
+                                            onChange: handleChange,
+                                            placeholder: "12345",
+                                            className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 153,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 151,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/InvoiceModal.tsx",
-                            lineNumber: 202,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 139,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
                                     className: "block text-sm font-medium mb-1",
-                                    children: "Beschreibung"
+                                    children: "Land"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 217,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 165,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("select", {
+                                    name: "country",
+                                    value: formData.country,
+                                    onChange: handleChange,
+                                    className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
+                                            value: "DE",
+                                            children: "Deutschland"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 172,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
+                                            value: "AT",
+                                            children: "Österreich"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 173,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
+                                            value: "CH",
+                                            children: "Schweiz"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 174,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
+                                            value: "FR",
+                                            children: "Frankreich"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 175,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("option", {
+                                            value: "GB",
+                                            children: "Großbritannien"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/CustomerModal.tsx",
+                                            lineNumber: 176,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 166,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 164,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
+                                    className: "block text-sm font-medium mb-1",
+                                    children: "Steuernummer"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 181,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
+                                    type: "text",
+                                    name: "taxId",
+                                    value: formData.taxId,
+                                    onChange: handleChange,
+                                    placeholder: "DE123456789",
+                                    className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 182,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 180,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("label", {
+                                    className: "block text-sm font-medium mb-1",
+                                    children: "Notizen"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 193,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("textarea", {
-                                    name: "description",
-                                    value: formData.description,
+                                    name: "notes",
+                                    value: formData.notes,
                                     onChange: handleChange,
-                                    placeholder: "Rechnungsdetails...",
+                                    placeholder: "Kundendetails...",
                                     rows: 3,
                                     className: "w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 218,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 194,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/InvoiceModal.tsx",
-                            lineNumber: 216,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                            className: "bg-gray-50 p-3 rounded-md space-y-1",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                    className: "flex justify-between text-sm",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                            children: "Nettobetrag:"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 230,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                            children: [
-                                                "€ ",
-                                                parseFloat(formData.amount || '0').toFixed(2)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 231,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 229,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                    className: "flex justify-between text-sm",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                            children: [
-                                                "Steuern (",
-                                                formData.taxRate,
-                                                "%):"
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 234,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                            children: [
-                                                "€ ",
-                                                taxAmount.toFixed(2)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 235,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 233,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                    className: "flex justify-between font-semibold text-base border-t pt-2 mt-2",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                            children: "Gesamtbetrag:"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 238,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                            children: [
-                                                "€ ",
-                                                total.toFixed(2)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/components/InvoiceModal.tsx",
-                                            lineNumber: 239,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 237,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/InvoiceModal.tsx",
-                            lineNumber: 228,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 192,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -875,88 +793,56 @@ function InvoiceModal({ isOpen, onClose, onSave, initialData }) {
                                     className: "flex-1 px-4 py-2 border rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50",
                                     children: "Abbrechen"
                                 }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 244,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 205,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                     type: "submit",
                                     className: "flex-1 px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700",
-                                    children: isEditing ? 'Speichern' : 'Rechnung erstellen'
+                                    children: isEditMode ? 'Speichern' : 'Kunde erstellen'
                                 }, void 0, false, {
-                                    fileName: "[project]/components/InvoiceModal.tsx",
-                                    lineNumber: 247,
+                                    fileName: "[project]/components/CustomerModal.tsx",
+                                    lineNumber: 208,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/components/InvoiceModal.tsx",
-                            lineNumber: 243,
+                            fileName: "[project]/components/CustomerModal.tsx",
+                            lineNumber: 204,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
-                    fileName: "[project]/components/InvoiceModal.tsx",
-                    lineNumber: 124,
+                    fileName: "[project]/components/CustomerModal.tsx",
+                    lineNumber: 89,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
-            fileName: "[project]/components/InvoiceModal.tsx",
-            lineNumber: 116,
+            fileName: "[project]/components/CustomerModal.tsx",
+            lineNumber: 81,
             columnNumber: 7
         }, this)
     }, void 0, false, {
-        fileName: "[project]/components/InvoiceModal.tsx",
-        lineNumber: 115,
+        fileName: "[project]/components/CustomerModal.tsx",
+        lineNumber: 80,
         columnNumber: 5
     }, this);
 }
 }),
-"[project]/components/StatusBadge.tsx [ssr] (ecmascript)", ((__turbopack_context__) => {
+"[project]/pages/customers.tsx [ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
     "default",
-    ()=>StatusBadge
-]);
-var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
-;
-const statusMap = {
-    open: 'bg-yellow-100 text-yellow-700',
-    paid: 'bg-green-100 text-green-700',
-    overdue: 'bg-red-100 text-red-700'
-};
-const statusLabel = {
-    open: 'Offen',
-    paid: 'Bezahlt',
-    overdue: 'Überfällig'
-};
-function StatusBadge({ status }) {
-    const klass = statusMap[status] || 'bg-gray-100 text-gray-700';
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-        className: `px-2 py-1 text-xs rounded ${klass}`,
-        children: statusLabel[status] || status
-    }, void 0, false, {
-        fileName: "[project]/components/StatusBadge.tsx",
-        lineNumber: 19,
-        columnNumber: 10
-    }, this);
-}
-}),
-"[project]/pages/invoices.tsx [ssr] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "default",
-    ()=>InvoicesPage
+    ()=>CustomersPage
 ]);
 var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react [external] (react, cjs)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Sidebar$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/Sidebar.tsx [ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/Header.tsx [ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$InvoiceModal$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/InvoiceModal.tsx [ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$StatusBadge$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/StatusBadge.tsx [ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CustomerModal$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/CustomerModal.tsx [ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$PencilIcon$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__PencilIcon$3e$__ = __turbopack_context__.i("[project]/node_modules/@heroicons/react/24/outline/esm/PencilIcon.js [ssr] (ecmascript) <export default as PencilIcon>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$TrashIcon$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TrashIcon$3e$__ = __turbopack_context__.i("[project]/node_modules/@heroicons/react/24/outline/esm/TrashIcon.js [ssr] (ecmascript) <export default as TrashIcon>");
 ;
@@ -965,75 +851,54 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$
 ;
 ;
 ;
-;
-function InvoicesPage() {
-    const [invoices, setInvoices] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]);
+function CustomersPage() {
+    const [customers, setCustomers] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(true);
     const [isModalOpen, setIsModalOpen] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
-    const [editingInvoice, setEditingInvoice] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(null);
+    const [editingCustomer, setEditingCustomer] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(null);
     const [refreshKey, setRefreshKey] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(0);
-    const normalizeStatus = (invoice)=>{
-        if (invoice.status === 'paid') return invoice;
-        if (!invoice.dueDate) return {
-            ...invoice,
-            status: 'open'
-        };
-        const due = new Date(invoice.dueDate);
-        due.setHours(23, 59, 59, 999);
-        const now = new Date();
-        if (due.getTime() < now.getTime()) {
-            return {
-                ...invoice,
-                status: 'overdue'
-            };
-        }
-        return {
-            ...invoice,
-            status: 'open'
-        };
-    };
-    const loadInvoices = async ()=>{
+    const loadCustomers = async ()=>{
         setLoading(true);
         try {
-            const res = await fetch('/api/invoices', {
+            const res = await fetch('/api/customers', {
                 cache: 'no-store'
             });
             if (res.ok) {
                 const data = await res.json();
-                const normalized = data.map(normalizeStatus);
-                setInvoices(normalized);
+                setCustomers(data);
             }
-        } catch (error) {
-            console.error('Error loading invoices:', error);
+        } catch (e) {
+            console.error('Error loading customers:', e);
         } finally{
             setLoading(false);
         }
     };
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
-        loadInvoices();
+        loadCustomers();
     }, [
         refreshKey
     ]);
     const summary = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useMemo"])(()=>{
-        const totalAmount = invoices.reduce((sum, invoice)=>sum + invoice.totalAmount, 0);
-        const openCount = invoices.filter((invoice)=>invoice.status === 'open').length;
-        const overdueCount = invoices.filter((invoice)=>invoice.status === 'overdue').length;
+        const totalCustomers = customers.length;
+        const withEmail = customers.filter((customer)=>customer.email).length;
+        const withTaxId = customers.filter((customer)=>customer.taxId).length;
         return {
-            totalAmount,
-            openCount,
-            overdueCount
+            totalCustomers,
+            withEmail,
+            withTaxId
         };
     }, [
-        invoices
+        customers
     ]);
-    const handleSaveInvoice = async (data)=>{
+    const handleSaveCustomer = async (data)=>{
         try {
-            const method = editingInvoice ? 'PUT' : 'POST';
-            const payload = editingInvoice ? {
+            const url = editingCustomer ? '/api/customers' : '/api/customers';
+            const method = editingCustomer ? 'PUT' : 'POST';
+            const payload = editingCustomer ? {
                 ...data,
-                id: editingInvoice.id
+                id: editingCustomer.id
             } : data;
-            const response = await fetch('/api/invoices', {
+            const response = await fetch(url, {
                 method,
                 headers: {
                     'Content-Type': 'application/json'
@@ -1041,76 +906,60 @@ function InvoicesPage() {
                 body: JSON.stringify(payload)
             });
             if (response.ok) {
-                alert(editingInvoice ? 'Rechnung aktualisiert' : `Rechnung "${data.title}" erstellt`);
+                alert(editingCustomer ? 'Kunde aktualisiert' : `Kunde "${data.name}" erstellt`);
                 setIsModalOpen(false);
-                setEditingInvoice(null);
+                setEditingCustomer(null);
                 setRefreshKey((prev)=>prev + 1);
             } else {
                 const err = await response.json();
-                alert(err.error || 'Fehler beim Speichern der Rechnung');
+                alert(err.error || 'Fehler beim Speichern des Kunden');
             }
         } catch (error) {
-            console.error('Error saving invoice:', error);
-            alert('Fehler beim Speichern der Rechnung');
+            console.error('Error:', error);
+            alert('Fehler beim Speichern des Kunden');
         }
-    };
-    const handleEdit = (invoice)=>{
-        setEditingInvoice(invoice);
-        setIsModalOpen(true);
     };
     const handleDelete = async (id)=>{
-        if (!confirm('Rechnung wirklich löschen?')) return;
-        try {
-            const res = await fetch(`/api/invoices?id=${id}`, {
-                method: 'DELETE'
-            });
-            if (res.ok) {
-                alert('Rechnung gelöscht');
-                setRefreshKey((prev)=>prev + 1);
-            } else {
-                alert('Fehler beim Löschen der Rechnung');
+        if (confirm('Kunden wirklich löschen?')) {
+            try {
+                const res = await fetch(`/api/customers?id=${id}`, {
+                    method: 'DELETE'
+                });
+                if (res.ok) {
+                    alert('Kunde gelöscht');
+                    setRefreshKey((prev)=>prev + 1);
+                } else {
+                    alert('Fehler beim Löschen');
+                }
+            } catch (e) {
+                console.error('Error:', e);
+                alert('Fehler beim Löschen');
             }
-        } catch (error) {
-            console.error('Error deleting invoice:', error);
-            alert('Fehler beim Löschen der Rechnung');
         }
+    };
+    const handleEdit = (customer)=>{
+        setEditingCustomer(customer);
+        setIsModalOpen(true);
     };
     const closeModal = ()=>{
         setIsModalOpen(false);
-        setEditingInvoice(null);
+        setEditingCustomer(null);
     };
-    const modalData = editingInvoice ? {
-        id: editingInvoice.id,
-        title: editingInvoice.title,
-        customer: editingInvoice.customer,
-        amount: editingInvoice.amount.toString(),
-        taxRate: editingInvoice.taxRate.toString(),
-        dueDate: editingInvoice.dueDate ?? '',
-        description: editingInvoice.description ?? '',
-        status: editingInvoice.status
-    } : null;
-    const formatCurrency = (value)=>value.toLocaleString('de-DE', {
-            style: 'currency',
-            currency: 'EUR'
-        });
     const heroCards = [
         {
-            label: 'Gesamtbetrag',
-            value: summary.totalAmount,
-            meta: `${invoices.length} Rechnungen`,
-            variant: 'currency'
+            label: 'Kunden gesamt',
+            value: summary.totalCustomers,
+            meta: 'Einträge insgesamt'
         },
         {
-            label: 'Offen',
-            value: summary.openCount,
-            meta: 'Offene Rechnungen',
-            variant: 'count'
+            label: 'Mit E-Mail',
+            value: summary.withEmail,
+            meta: 'Kontaktinformationen'
         },
         {
-            label: 'Überfällig',
-            value: summary.overdueCount,
-            meta: 'Überfällige Rechnungen',
-            variant: 'count'
+            label: 'Mit Steuernummer',
+            value: summary.withTaxId,
+            meta: 'Steuerinformationen'
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1120,18 +969,16 @@ function InvoicesPage() {
         },
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Sidebar$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                fileName: "[project]/pages/invoices.tsx",
-                lineNumber: 151,
+                fileName: "[project]/pages/customers.tsx",
+                lineNumber: 122,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                 className: "flex-1 p-8 space-y-6",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
-                        onNewInvoice: ()=>setIsModalOpen(true)
-                    }, void 0, false, {
-                        fileName: "[project]/pages/invoices.tsx",
-                        lineNumber: 154,
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Header$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 125,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1139,24 +986,24 @@ function InvoicesPage() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h1", {
                                 className: "text-3xl font-bold",
-                                children: "Rechnungen"
+                                children: "Kunden"
                             }, void 0, false, {
-                                fileName: "[project]/pages/invoices.tsx",
-                                lineNumber: 157,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 128,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                 className: "text-sm text-white/80",
-                                children: "Verwalte alle Rechnungen mit Status-Tracking und Details"
+                                children: "Alle Kunden mit Kontakten, Steuernummern und Aktionen in einem Glas-Cockpit"
                             }, void 0, false, {
-                                fileName: "[project]/pages/invoices.tsx",
-                                lineNumber: 158,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 129,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/pages/invoices.tsx",
-                        lineNumber: 156,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 127,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1168,35 +1015,35 @@ function InvoicesPage() {
                                         className: "text-xs uppercase tracking-wider text-white/60",
                                         children: card.label
                                     }, void 0, false, {
-                                        fileName: "[project]/pages/invoices.tsx",
-                                        lineNumber: 167,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 138,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                         className: "text-3xl font-bold text-white mt-2",
-                                        children: card.variant === 'currency' ? formatCurrency(card.value) : card.value
+                                        children: card.value
                                     }, void 0, false, {
-                                        fileName: "[project]/pages/invoices.tsx",
-                                        lineNumber: 168,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 139,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                         className: "text-xs text-white/60 mt-1",
                                         children: card.meta
                                     }, void 0, false, {
-                                        fileName: "[project]/pages/invoices.tsx",
-                                        lineNumber: 171,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 140,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, card.label, true, {
-                                fileName: "[project]/pages/invoices.tsx",
-                                lineNumber: 163,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 134,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
-                        fileName: "[project]/pages/invoices.tsx",
-                        lineNumber: 161,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 132,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1206,77 +1053,74 @@ function InvoicesPage() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                         className: "text-sm font-semibold uppercase tracking-wider text-white/70",
-                                        children: "Zeige Rechnungen"
+                                        children: "Kundenliste"
                                     }, void 0, false, {
-                                        fileName: "[project]/pages/invoices.tsx",
-                                        lineNumber: 178,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 147,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                         className: "text-xs text-white/60",
                                         children: [
-                                            invoices.length,
+                                            customers.length,
                                             " Einträge geladen"
                                         ]
                                     }, void 0, true, {
-                                        fileName: "[project]/pages/invoices.tsx",
-                                        lineNumber: 179,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 148,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
-                                fileName: "[project]/pages/invoices.tsx",
-                                lineNumber: 177,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 146,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
-                                onClick: ()=>{
-                                    setEditingInvoice(null);
-                                    setIsModalOpen(true);
-                                },
+                                onClick: ()=>setIsModalOpen(true),
                                 className: "rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 px-5 py-3 text-sm font-semibold text-white shadow-[0_20px_50px_rgba(15,23,42,0.5)]",
-                                children: "+ Neue Rechnung"
+                                children: "+ Neuer Kunde"
                             }, void 0, false, {
-                                fileName: "[project]/pages/invoices.tsx",
-                                lineNumber: 181,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 150,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/pages/invoices.tsx",
-                        lineNumber: 176,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 145,
                         columnNumber: 9
                     }, this),
                     loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                         className: "rounded-3xl border border-white/30 bg-white/10 shadow-[0_30px_80px_rgba(15,23,42,0.55)] backdrop-blur-2xl p-10 text-center text-white/80",
                         children: "Lädt..."
                     }, void 0, false, {
-                        fileName: "[project]/pages/invoices.tsx",
-                        lineNumber: 193,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 159,
                         columnNumber: 11
-                    }, this) : invoices.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                    }, this) : customers.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                         className: "rounded-3xl border border-white/30 bg-white/10 shadow-[0_30px_80px_rgba(15,23,42,0.55)] backdrop-blur-2xl p-10 text-center text-white/80 space-y-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
-                                children: "Noch keine Rechnungen vorhanden."
+                                children: "Noch keine Kunden vorhanden."
                             }, void 0, false, {
-                                fileName: "[project]/pages/invoices.tsx",
-                                lineNumber: 198,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 164,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                 onClick: ()=>setIsModalOpen(true),
                                 className: "rounded-full bg-white/10 px-5 py-2 text-sm font-semibold text-white shadow-[0_15px_40px_rgba(15,23,42,0.45)]",
-                                children: "Erste Rechnung erstellen"
+                                children: "Ersten Kunden hinzufügen"
                             }, void 0, false, {
-                                fileName: "[project]/pages/invoices.tsx",
-                                lineNumber: 199,
+                                fileName: "[project]/pages/customers.tsx",
+                                lineNumber: 165,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/pages/invoices.tsx",
-                        lineNumber: 197,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 163,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                         className: "rounded-3xl border border-white/20 bg-white/5 shadow-[0_30px_80px_rgba(15,23,42,0.55)] backdrop-blur-2xl",
@@ -1289,230 +1133,230 @@ function InvoicesPage() {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("th", {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
-                                                children: "TITEL"
+                                                children: "NAME"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/invoices.tsx",
-                                                lineNumber: 211,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 177,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("th", {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
-                                                children: "KUNDE"
+                                                children: "EMAIL"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/invoices.tsx",
-                                                lineNumber: 212,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("th", {
-                                                className: "px-6 py-3 text-right text-xs font-semibold text-white/70",
-                                                children: "BETRAG"
-                                            }, void 0, false, {
-                                                fileName: "[project]/pages/invoices.tsx",
-                                                lineNumber: 213,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 178,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("th", {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
-                                                children: "STATUS"
+                                                children: "TELEFON"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/invoices.tsx",
-                                                lineNumber: 214,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 179,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("th", {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
-                                                children: "FÄLLIG AM"
+                                                children: "STADT"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/invoices.tsx",
-                                                lineNumber: 215,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 180,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("th", {
+                                                className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
+                                                children: "LAND"
+                                            }, void 0, false, {
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 181,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("th", {
+                                                className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
+                                                children: "STEUERNUMMER"
+                                            }, void 0, false, {
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 182,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("th", {
                                                 className: "px-6 py-3 text-left text-xs font-semibold text-white/70",
                                                 children: "AKTIONEN"
                                             }, void 0, false, {
-                                                fileName: "[project]/pages/invoices.tsx",
-                                                lineNumber: 216,
+                                                fileName: "[project]/pages/customers.tsx",
+                                                lineNumber: 183,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
-                                        fileName: "[project]/pages/invoices.tsx",
-                                        lineNumber: 210,
+                                        fileName: "[project]/pages/customers.tsx",
+                                        lineNumber: 176,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
-                                    fileName: "[project]/pages/invoices.tsx",
-                                    lineNumber: 209,
+                                    fileName: "[project]/pages/customers.tsx",
+                                    lineNumber: 175,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("tbody", {
-                                    children: invoices.map((invoice, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("tr", {
+                                    children: customers.map((customer, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("tr", {
                                             className: `transition-colors ${idx % 2 === 0 ? 'bg-white/10' : 'bg-white/5'}`,
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
-                                                    className: "px-6 py-4 text-sm font-medium text-white",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                                            children: invoice.title
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/pages/invoices.tsx",
-                                                            lineNumber: 226,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                                            className: "text-xs uppercase tracking-wide text-white/40 mt-1",
-                                                            children: "Info"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/pages/invoices.tsx",
-                                                            lineNumber: 227,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
-                                                            className: "text-xs text-white/60",
-                                                            children: invoice.description || 'Keine Beschreibung'
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/pages/invoices.tsx",
-                                                            lineNumber: 228,
-                                                            columnNumber: 23
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/pages/invoices.tsx",
-                                                    lineNumber: 225,
-                                                    columnNumber: 21
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
-                                                    className: "px-6 py-4 text-sm text-white/80",
-                                                    children: invoice.customer
+                                                    className: "px-6 py-4 text-white font-semibold",
+                                                    children: customer.name
                                                 }, void 0, false, {
-                                                    fileName: "[project]/pages/invoices.tsx",
-                                                    lineNumber: 230,
-                                                    columnNumber: 21
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
-                                                    className: "px-6 py-4 text-sm font-semibold text-right text-white",
-                                                    children: [
-                                                        "€ ",
-                                                        invoice.totalAmount.toFixed(2)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/pages/invoices.tsx",
-                                                    lineNumber: 231,
-                                                    columnNumber: 21
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
-                                                    className: "px-6 py-4 text-sm",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$StatusBadge$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                                        status: invoice.status
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/pages/invoices.tsx",
-                                                        lineNumber: 233,
-                                                        columnNumber: 23
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/pages/invoices.tsx",
-                                                    lineNumber: 232,
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 189,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 text-sm text-white/70",
-                                                    children: invoice.dueDate ? new Date(invoice.dueDate).toLocaleDateString('de-DE') : '–'
+                                                    children: customer.email || '–'
                                                 }, void 0, false, {
-                                                    fileName: "[project]/pages/invoices.tsx",
-                                                    lineNumber: 235,
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 190,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
+                                                    className: "px-6 py-4 text-sm text-white/70",
+                                                    children: customer.phone || '–'
+                                                }, void 0, false, {
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 191,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
+                                                    className: "px-6 py-4 text-sm text-white/70",
+                                                    children: customer.city || '–'
+                                                }, void 0, false, {
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 192,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
+                                                    className: "px-6 py-4 text-sm text-white/70",
+                                                    children: customer.country || '–'
+                                                }, void 0, false, {
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 193,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
+                                                    className: "px-6 py-4 text-sm text-white/70",
+                                                    children: customer.taxId || '–'
+                                                }, void 0, false, {
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 194,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
                                                     className: "px-6 py-4 text-sm space-x-3 text-white/80",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
-                                                            onClick: ()=>handleEdit(invoice),
+                                                            onClick: ()=>handleEdit(customer),
                                                             className: "inline-flex items-center gap-1 hover:text-white",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$PencilIcon$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__PencilIcon$3e$__["PencilIcon"], {
                                                                     className: "w-4 h-4"
                                                                 }, void 0, false, {
-                                                                    fileName: "[project]/pages/invoices.tsx",
-                                                                    lineNumber: 243,
+                                                                    fileName: "[project]/pages/customers.tsx",
+                                                                    lineNumber: 200,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 "Bearbeiten"
                                                             ]
                                                         }, void 0, true, {
-                                                            fileName: "[project]/pages/invoices.tsx",
-                                                            lineNumber: 239,
+                                                            fileName: "[project]/pages/customers.tsx",
+                                                            lineNumber: 196,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
-                                                            onClick: ()=>handleDelete(invoice.id),
+                                                            onClick: ()=>handleDelete(customer.id),
                                                             className: "inline-flex items-center gap-1 text-rose-300 hover:text-rose-100",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$TrashIcon$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TrashIcon$3e$__["TrashIcon"], {
                                                                     className: "w-4 h-4"
                                                                 }, void 0, false, {
-                                                                    fileName: "[project]/pages/invoices.tsx",
-                                                                    lineNumber: 250,
+                                                                    fileName: "[project]/pages/customers.tsx",
+                                                                    lineNumber: 207,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 "Löschen"
                                                             ]
                                                         }, void 0, true, {
-                                                            fileName: "[project]/pages/invoices.tsx",
-                                                            lineNumber: 246,
+                                                            fileName: "[project]/pages/customers.tsx",
+                                                            lineNumber: 203,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
-                                                    fileName: "[project]/pages/invoices.tsx",
-                                                    lineNumber: 238,
+                                                    fileName: "[project]/pages/customers.tsx",
+                                                    lineNumber: 195,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
-                                        }, invoice.id, true, {
-                                            fileName: "[project]/pages/invoices.tsx",
-                                            lineNumber: 221,
+                                        }, customer.id, true, {
+                                            fileName: "[project]/pages/customers.tsx",
+                                            lineNumber: 188,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
-                                    fileName: "[project]/pages/invoices.tsx",
-                                    lineNumber: 219,
+                                    fileName: "[project]/pages/customers.tsx",
+                                    lineNumber: 186,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/pages/invoices.tsx",
-                            lineNumber: 208,
+                            fileName: "[project]/pages/customers.tsx",
+                            lineNumber: 174,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
-                        fileName: "[project]/pages/invoices.tsx",
-                        lineNumber: 207,
+                        fileName: "[project]/pages/customers.tsx",
+                        lineNumber: 173,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "[project]/pages/invoices.tsx",
-                lineNumber: 153,
+                fileName: "[project]/pages/customers.tsx",
+                lineNumber: 124,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$InvoiceModal$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CustomerModal$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
                 isOpen: isModalOpen,
                 onClose: closeModal,
-                onSave: handleSaveInvoice,
-                initialData: modalData
+                onSave: handleSaveCustomer,
+                initialData: editingCustomer
             }, void 0, false, {
-                fileName: "[project]/pages/invoices.tsx",
-                lineNumber: 262,
+                fileName: "[project]/pages/customers.tsx",
+                lineNumber: 219,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
-        fileName: "[project]/pages/invoices.tsx",
-        lineNumber: 145,
+        fileName: "[project]/pages/customers.tsx",
+        lineNumber: 116,
         columnNumber: 5
     }, this);
 }
+}),
+"[project]/pages/index.tsx [ssr] (ecmascript) <locals>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$customers$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/pages/customers.tsx [ssr] (ecmascript)");
+;
+}),
+"[project]/pages/index.tsx [ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$customers$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$index$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/pages/index.tsx [ssr] (ecmascript) <locals>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$pages$2f$customers$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/pages/customers.tsx [ssr] (ecmascript)");
 }),
 "[externals]/next/dist/shared/lib/no-fallback-error.external.js [external] (next/dist/shared/lib/no-fallback-error.external.js, cjs)", ((__turbopack_context__, module, exports) => {
 
@@ -1522,4 +1366,4 @@ module.exports = mod;
 }),
 ];
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__f283f243._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__5ffec9d4._.js.map

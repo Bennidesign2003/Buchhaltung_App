@@ -749,7 +749,7 @@ function Header({ onNewInvoice }) {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-sm text-gray-500",
-                        children: "Willkommen zurück, hier ist Ihr Finanzüberblick"
+                        children: "Behalte Umsatz, Zahlen und Trends in einem Liquid-Glass-Cockpit im Blick."
                     }, void 0, false, {
                         fileName: "[project]/components/Header.tsx",
                         lineNumber: 8,
@@ -772,14 +772,14 @@ function Header({ onNewInvoice }) {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/Header.tsx",
-                                lineNumber: 14,
+                                lineNumber: 17,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 children: "Neue Rechnung"
                             }, void 0, false, {
                                 fileName: "[project]/components/Header.tsx",
-                                lineNumber: 15,
+                                lineNumber: 18,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -794,12 +794,12 @@ function Header({ onNewInvoice }) {
                             className: "w-5 h-5 text-gray-600"
                         }, void 0, false, {
                             fileName: "[project]/components/Header.tsx",
-                            lineNumber: 19,
+                            lineNumber: 22,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Header.tsx",
-                        lineNumber: 18,
+                        lineNumber: 21,
                         columnNumber: 9
                     }, this)
                 ]
@@ -1124,6 +1124,10 @@ function LineChart({ refreshKey } = {}) {
     const [labels, setLabels] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [values, setValues] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const chartTextColor = '#e2e8f0';
+    const chartGridColor = 'rgba(226,232,240,0.15)';
+    const tooltipBg = 'rgba(15,23,42,0.85)';
+    const tooltipBorder = 'rgba(226,232,240,0.35)';
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "LineChart.useEffect": ()=>{
             let mounted = true;
@@ -1234,6 +1238,11 @@ function LineChart({ refreshKey } = {}) {
                 display: false
             },
             tooltip: {
+                backgroundColor: tooltipBg,
+                borderColor: tooltipBorder,
+                borderWidth: 1,
+                bodyColor: chartTextColor,
+                titleColor: chartTextColor,
                 callbacks: {
                     label: function(context) {
                         try {
@@ -1250,9 +1259,21 @@ function LineChart({ refreshKey } = {}) {
             }
         },
         scales: {
+            x: {
+                grid: {
+                    color: chartGridColor
+                },
+                ticks: {
+                    color: chartTextColor
+                }
+            },
             y: {
                 min: 0,
+                grid: {
+                    color: chartGridColor
+                },
                 ticks: {
+                    color: chartTextColor,
                     stepSize: 1,
                     callback: function(value) {
                         try {
@@ -1279,7 +1300,7 @@ function LineChart({ refreshKey } = {}) {
                         children: "Offene Rechnung Entwicklung"
                     }, void 0, false, {
                         fileName: "[project]/components/LineChart.tsx",
-                        lineNumber: 153,
+                        lineNumber: 169,
                         columnNumber: 9
                     }, this),
                     loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1287,13 +1308,13 @@ function LineChart({ refreshKey } = {}) {
                         children: "Lädt…"
                     }, void 0, false, {
                         fileName: "[project]/components/LineChart.tsx",
-                        lineNumber: 154,
+                        lineNumber: 170,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/LineChart.tsx",
-                lineNumber: 152,
+                lineNumber: 168,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$chartjs$2d$2$2f$dist$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Line"], {
@@ -1301,13 +1322,13 @@ function LineChart({ refreshKey } = {}) {
                 data: data
             }, void 0, false, {
                 fileName: "[project]/components/LineChart.tsx",
-                lineNumber: 156,
+                lineNumber: 172,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/LineChart.tsx",
-        lineNumber: 151,
+        lineNumber: 167,
         columnNumber: 5
     }, this);
 }
@@ -1352,6 +1373,10 @@ function ExpensesChart({ refreshKey } = {}) {
     const [labels, setLabels] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [values, setValues] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const chartTextColor = '#e2e8f0';
+    const chartGridColor = 'rgba(226,232,240,0.15)';
+    const tooltipBg = 'rgba(15,23,42,0.85)';
+    const tooltipBorder = 'rgba(226,232,240,0.35)';
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ExpensesChart.useEffect": ()=>{
             let mounted = true;
@@ -1415,6 +1440,11 @@ function ExpensesChart({ refreshKey } = {}) {
                 display: false
             },
             tooltip: {
+                backgroundColor: tooltipBg,
+                borderColor: tooltipBorder,
+                borderWidth: 1,
+                bodyColor: chartTextColor,
+                titleColor: chartTextColor,
                 callbacks: {
                     label: function(context) {
                         try {
@@ -1431,9 +1461,21 @@ function ExpensesChart({ refreshKey } = {}) {
             }
         },
         scales: {
+            x: {
+                grid: {
+                    color: chartGridColor
+                },
+                ticks: {
+                    color: chartTextColor
+                }
+            },
             y: {
                 min: 0,
+                grid: {
+                    color: chartGridColor
+                },
                 ticks: {
+                    color: chartTextColor,
                     stepSize: 1,
                     callback: function(value) {
                         try {
@@ -1460,7 +1502,7 @@ function ExpensesChart({ refreshKey } = {}) {
                         children: "Ausgabenentwicklung"
                     }, void 0, false, {
                         fileName: "[project]/components/ExpensesChart.tsx",
-                        lineNumber: 111,
+                        lineNumber: 127,
                         columnNumber: 9
                     }, this),
                     loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1468,13 +1510,13 @@ function ExpensesChart({ refreshKey } = {}) {
                         children: "Lädt…"
                     }, void 0, false, {
                         fileName: "[project]/components/ExpensesChart.tsx",
-                        lineNumber: 112,
+                        lineNumber: 128,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/ExpensesChart.tsx",
-                lineNumber: 110,
+                lineNumber: 126,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$chartjs$2d$2$2f$dist$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Line"], {
@@ -1482,13 +1524,13 @@ function ExpensesChart({ refreshKey } = {}) {
                 data: data
             }, void 0, false, {
                 fileName: "[project]/components/ExpensesChart.tsx",
-                lineNumber: 114,
+                lineNumber: 130,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/ExpensesChart.tsx",
-        lineNumber: 109,
+        lineNumber: 125,
         columnNumber: 5
     }, this);
 }
@@ -1518,6 +1560,9 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Chart"].register(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["ArcElement"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Tooltip"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Legend"]);
+const chartTextColor = '#e2e8f0';
+const tooltipBg = 'rgba(15,23,42,0.85)';
+const tooltipBorder = 'rgba(226,232,240,0.35)';
 const colors = [
     '#3b82f6',
     '#8b5cf6',
@@ -1600,10 +1645,16 @@ function ExpensesDistributionChart({ refreshKey } = {}) {
                         size: 12
                     },
                     padding: 10,
-                    boxWidth: 12
+                    boxWidth: 12,
+                    color: chartTextColor
                 }
             },
             tooltip: {
+                backgroundColor: tooltipBg,
+                borderColor: tooltipBorder,
+                borderWidth: 1,
+                bodyColor: chartTextColor,
+                titleColor: chartTextColor,
                 callbacks: {
                     label: function(context) {
                         const value = Number(context.parsed).toFixed(2);
@@ -1626,7 +1677,7 @@ function ExpensesDistributionChart({ refreshKey } = {}) {
                         children: "Ausgabenverteilung"
                     }, void 0, false, {
                         fileName: "[project]/components/ExpensesDistributionChart.tsx",
-                        lineNumber: 95,
+                        lineNumber: 105,
                         columnNumber: 9
                     }, this),
                     loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1634,13 +1685,13 @@ function ExpensesDistributionChart({ refreshKey } = {}) {
                         children: "Lädt…"
                     }, void 0, false, {
                         fileName: "[project]/components/ExpensesDistributionChart.tsx",
-                        lineNumber: 96,
+                        lineNumber: 106,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/ExpensesDistributionChart.tsx",
-                lineNumber: 94,
+                lineNumber: 104,
                 columnNumber: 7
             }, this),
             totals.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$chartjs$2d$2$2f$dist$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Pie"], {
@@ -1648,20 +1699,20 @@ function ExpensesDistributionChart({ refreshKey } = {}) {
                 data: data
             }, void 0, false, {
                 fileName: "[project]/components/ExpensesDistributionChart.tsx",
-                lineNumber: 99,
+                lineNumber: 109,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "text-center py-8 text-white/70",
                 children: "Noch keine Ausgaben erfasst"
             }, void 0, false, {
                 fileName: "[project]/components/ExpensesDistributionChart.tsx",
-                lineNumber: 101,
+                lineNumber: 111,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/ExpensesDistributionChart.tsx",
-        lineNumber: 93,
+        lineNumber: 103,
         columnNumber: 5
     }, this);
 }
@@ -1774,6 +1825,7 @@ function TransactionList({ refreshTrigger }) {
     _s();
     const [items, setItems] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [page, setPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(0);
     const fetchData = async ()=>{
         setLoading(true);
         try {
@@ -1815,6 +1867,16 @@ function TransactionList({ refreshTrigger }) {
     }["TransactionList.useEffect"], [
         refreshTrigger
     ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "TransactionList.useEffect": ()=>{
+            setPage(0);
+        }
+    }["TransactionList.useEffect"], [
+        items.length
+    ]);
+    const itemsPerPage = 10;
+    const totalPages = Math.max(Math.ceil(items.length / itemsPerPage), 1);
+    const currentItems = items.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
     if (loading) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "bg-transparent p-0",
@@ -1823,12 +1885,12 @@ function TransactionList({ refreshTrigger }) {
                 children: "Daten werden geladen..."
             }, void 0, false, {
                 fileName: "[project]/components/TransactionList.tsx",
-                lineNumber: 82,
+                lineNumber: 91,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/components/TransactionList.tsx",
-            lineNumber: 81,
+            lineNumber: 90,
             columnNumber: 7
         }, this);
     }
@@ -1845,7 +1907,7 @@ function TransactionList({ refreshTrigger }) {
                                 children: "Aktuelle Transaktionen"
                             }, void 0, false, {
                                 fileName: "[project]/components/TransactionList.tsx",
-                                lineNumber: 91,
+                                lineNumber: 100,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1853,13 +1915,13 @@ function TransactionList({ refreshTrigger }) {
                                 children: "Rechnungen & Ausgaben auf einen Blick"
                             }, void 0, false, {
                                 fileName: "[project]/components/TransactionList.tsx",
-                                lineNumber: 92,
+                                lineNumber: 101,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/TransactionList.tsx",
-                        lineNumber: 90,
+                        lineNumber: 99,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1871,7 +1933,7 @@ function TransactionList({ refreshTrigger }) {
                                 children: "Rechnungen"
                             }, void 0, false, {
                                 fileName: "[project]/components/TransactionList.tsx",
-                                lineNumber: 95,
+                                lineNumber: 104,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1879,7 +1941,7 @@ function TransactionList({ refreshTrigger }) {
                                 children: "|"
                             }, void 0, false, {
                                 fileName: "[project]/components/TransactionList.tsx",
-                                lineNumber: 98,
+                                lineNumber: 107,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1888,19 +1950,19 @@ function TransactionList({ refreshTrigger }) {
                                 children: "Ausgaben"
                             }, void 0, false, {
                                 fileName: "[project]/components/TransactionList.tsx",
-                                lineNumber: 99,
+                                lineNumber: 108,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/TransactionList.tsx",
-                        lineNumber: 94,
+                        lineNumber: 103,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/TransactionList.tsx",
-                lineNumber: 89,
+                lineNumber: 98,
                 columnNumber: 7
             }, this),
             items.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1910,138 +1972,205 @@ function TransactionList({ refreshTrigger }) {
                     children: "Noch keine Transaktionen erstellt."
                 }, void 0, false, {
                     fileName: "[project]/components/TransactionList.tsx",
-                    lineNumber: 107,
+                    lineNumber: 116,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/TransactionList.tsx",
-                lineNumber: 106,
+                lineNumber: 115,
                 columnNumber: 9
-            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                className: "space-y-3",
-                children: items.slice(0, 8).map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                        className: "flex items-center justify-between border-b border-white/10 pb-3",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center gap-3",
+            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                        className: "space-y-3",
+                        children: currentItems.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                className: "flex items-center justify-between border-b border-white/10 pb-3",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "text-2xl",
-                                        children: item.type === 'invoice' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$DocumentTextIcon$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DocumentTextIcon$3e$__["DocumentTextIcon"], {
-                                            className: "w-5 h-5 text-blue-400"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/TransactionList.tsx",
-                                            lineNumber: 115,
-                                            columnNumber: 46
-                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$BanknotesIcon$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__BanknotesIcon$3e$__["BanknotesIcon"], {
-                                            className: "w-5 h-5 text-rose-400"
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/TransactionList.tsx",
-                                            lineNumber: 115,
-                                            columnNumber: 103
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/TransactionList.tsx",
-                                        lineNumber: 114,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center gap-3",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "font-medium leading-tight text-white",
-                                                children: item.type === 'invoice' ? item.title || `Rechnung ${item.id}` : `${item.category}`
+                                                className: "text-2xl",
+                                                children: item.type === 'invoice' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$DocumentTextIcon$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__DocumentTextIcon$3e$__["DocumentTextIcon"], {
+                                                    className: "w-5 h-5 text-blue-400"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/TransactionList.tsx",
+                                                    lineNumber: 125,
+                                                    columnNumber: 46
+                                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$BanknotesIcon$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__BanknotesIcon$3e$__["BanknotesIcon"], {
+                                                    className: "w-5 h-5 text-rose-400"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/TransactionList.tsx",
+                                                    lineNumber: 125,
+                                                    columnNumber: 103
+                                                }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/TransactionList.tsx",
-                                                lineNumber: 118,
-                                                columnNumber: 19
+                                                lineNumber: 124,
+                                                columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "text-[10px] uppercase tracking-widest text-white/40 mt-1",
-                                                children: "Info"
-                                            }, void 0, false, {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "font-medium leading-tight text-white",
+                                                        children: item.type === 'invoice' ? item.title || `Rechnung ${item.id}` : `${item.category}`
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/TransactionList.tsx",
+                                                        lineNumber: 128,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "text-[10px] uppercase tracking-widest text-white/40 mt-1",
+                                                        children: "Info"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/TransactionList.tsx",
+                                                        lineNumber: 131,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "text-sm text-white/70",
+                                                        children: item.type === 'invoice' ? item.description || 'Keine Beschreibung' : item.description || 'Keine Beschreibung'
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/components/TransactionList.tsx",
+                                                        lineNumber: 132,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
                                                 fileName: "[project]/components/TransactionList.tsx",
-                                                lineNumber: 121,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "text-sm text-white/70",
-                                                children: item.type === 'invoice' ? item.description || 'Keine Beschreibung' : item.description || 'Keine Beschreibung'
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/TransactionList.tsx",
-                                                lineNumber: 122,
-                                                columnNumber: 19
+                                                lineNumber: 127,
+                                                columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/TransactionList.tsx",
-                                        lineNumber: 117,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/TransactionList.tsx",
-                                lineNumber: 113,
-                                columnNumber: 15
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "text-right",
-                                children: [
+                                        lineNumber: 123,
+                                        columnNumber: 15
+                                    }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "font-medium text-white",
+                                        className: "text-right",
                                         children: [
-                                            "€ ",
-                                            Number(item.type === 'invoice' ? item.totalAmount : item.amount).toFixed(2)
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "font-medium text-white",
+                                                children: [
+                                                    "€ ",
+                                                    Number(item.type === 'invoice' ? item.totalAmount : item.amount).toFixed(2)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/TransactionList.tsx",
+                                                lineNumber: 140,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "mt-1",
+                                                children: item.type === 'invoice' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$StatusBadge$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                                    status: item.status
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/TransactionList.tsx",
+                                                    lineNumber: 143,
+                                                    columnNumber: 21
+                                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CategoryBadge$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                                    category: item.category
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/TransactionList.tsx",
+                                                    lineNumber: 145,
+                                                    columnNumber: 21
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/TransactionList.tsx",
+                                                lineNumber: 141,
+                                                columnNumber: 17
+                                            }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/TransactionList.tsx",
-                                        lineNumber: 130,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "mt-1",
-                                        children: item.type === 'invoice' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$StatusBadge$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                            status: item.status
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/TransactionList.tsx",
-                                            lineNumber: 133,
-                                            columnNumber: 21
-                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CategoryBadge$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                            category: item.category
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/TransactionList.tsx",
-                                            lineNumber: 135,
-                                            columnNumber: 21
-                                        }, this)
+                                        lineNumber: 139,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, `${item.type}-${item.id}`, true, {
+                                fileName: "[project]/components/TransactionList.tsx",
+                                lineNumber: 122,
+                                columnNumber: 13
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "[project]/components/TransactionList.tsx",
+                        lineNumber: 120,
+                        columnNumber: 11
+                    }, this),
+                    items.length > itemsPerPage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-sm text-white/70",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                children: [
+                                    "Zeigt ",
+                                    currentItems.length,
+                                    " von ",
+                                    items.length,
+                                    " Einträgen"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/TransactionList.tsx",
+                                lineNumber: 154,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: ()=>setPage((prev)=>Math.max(prev - 1, 0)),
+                                        disabled: page === 0,
+                                        className: "px-3 py-1 rounded-full border border-white/30 disabled:border-white/10 disabled:text-white/30",
+                                        children: "Vorherige 10"
                                     }, void 0, false, {
                                         fileName: "[project]/components/TransactionList.tsx",
-                                        lineNumber: 131,
+                                        lineNumber: 158,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: [
+                                            "Seite ",
+                                            page + 1,
+                                            " / ",
+                                            totalPages
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/TransactionList.tsx",
+                                        lineNumber: 165,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: ()=>setPage((prev)=>Math.min(prev + 1, totalPages - 1)),
+                                        disabled: page >= totalPages - 1,
+                                        className: "px-3 py-1 rounded-full border border-white/30 disabled:border-white/10 disabled:text-white/30",
+                                        children: "Nächste 10"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/TransactionList.tsx",
+                                        lineNumber: 168,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/TransactionList.tsx",
-                                lineNumber: 129,
+                                lineNumber: 157,
                                 columnNumber: 15
                             }, this)
                         ]
-                    }, `${item.type}-${item.id}`, true, {
+                    }, void 0, true, {
                         fileName: "[project]/components/TransactionList.tsx",
-                        lineNumber: 112,
+                        lineNumber: 153,
                         columnNumber: 13
-                    }, this))
-            }, void 0, false, {
-                fileName: "[project]/components/TransactionList.tsx",
-                lineNumber: 110,
-                columnNumber: 9
-            }, this)
+                    }, this)
+                ]
+            }, void 0, true)
         ]
     }, void 0, true, {
         fileName: "[project]/components/TransactionList.tsx",
-        lineNumber: 88,
+        lineNumber: 97,
         columnNumber: 5
     }, this);
 }
-_s(TransactionList, "X0A+44AtCQpjgFsTFhgdow3TGVs=");
+_s(TransactionList, "1EYgZ67gxBm/5T6RezlkLYLLc2c=");
 _c = TransactionList;
 var _c;
 __turbopack_context__.k.register(_c, "TransactionList");
@@ -2158,6 +2287,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$cha
 ;
 ;
 ;
+const chartTextColor = '#e2e8f0';
+const tooltipBg = 'rgba(15,23,42,0.85)';
+const tooltipBorder = 'rgba(226,232,240,0.35)';
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Chart"].register(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["ArcElement"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Tooltip"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Legend"]);
 function PieChart() {
     const data = {
@@ -2191,7 +2323,17 @@ function PieChart() {
         responsive: true,
         plugins: {
             legend: {
-                position: 'right'
+                position: 'right',
+                labels: {
+                    color: chartTextColor
+                }
+            },
+            tooltip: {
+                backgroundColor: tooltipBg,
+                borderColor: tooltipBorder,
+                borderWidth: 1,
+                bodyColor: chartTextColor,
+                titleColor: chartTextColor
             }
         }
     };
@@ -2203,7 +2345,7 @@ function PieChart() {
                 children: "Ausgabenverteilung"
             }, void 0, false, {
                 fileName: "[project]/components/PieChart.tsx",
-                lineNumber: 26,
+                lineNumber: 41,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$chartjs$2d$2$2f$dist$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Pie"], {
@@ -2211,13 +2353,13 @@ function PieChart() {
                 options: options
             }, void 0, false, {
                 fileName: "[project]/components/PieChart.tsx",
-                lineNumber: 27,
+                lineNumber: 42,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/PieChart.tsx",
-        lineNumber: 25,
+        lineNumber: 40,
         columnNumber: 5
     }, this);
 }
@@ -3743,6 +3885,8 @@ function Home() {
     ];
     // initialize with server-safe default; read saved order on client after mount to avoid hydration mismatch
     const [order, setOrder] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(defaultOrder);
+    const glassPanel = 'rounded-3xl border border-white/20 bg-white/5 shadow-[0_30px_80px_rgba(15,23,42,0.55)] backdrop-blur-2xl';
+    const heroCardClass = 'rounded-3xl border border-white/30 bg-white/10 shadow-[0_25px_60px_rgba(15,23,42,0.45)] backdrop-blur-2xl px-5 py-6';
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Home.useEffect": ()=>{
             try {
@@ -3845,33 +3989,33 @@ function Home() {
                 refreshKey: refreshKey
             }, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 126,
+                lineNumber: 128,
                 columnNumber: 35
             }, this);
             if (key === 'expenses-chart') return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ExpensesChart$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                 refreshKey: refreshKey
             }, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 127,
+                lineNumber: 129,
                 columnNumber: 44
             }, this);
             if (key === 'invoices') return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$TransactionList$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                 refreshTrigger: refreshKey
             }, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 128,
+                lineNumber: 130,
                 columnNumber: 38
             }, this);
             if (key === 'pie') return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$PieChart$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 129,
+                lineNumber: 131,
                 columnNumber: 33
             }, this);
             if (key === 'expenses-dist') return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ExpensesDistributionChart$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                 refreshKey: refreshKey
             }, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 130,
+                lineNumber: 132,
                 columnNumber: 43
             }, this);
             if (key === 'quick') return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$QuickActions$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -3880,7 +4024,7 @@ function Home() {
                 onNewExpense: ()=>setIsExpenseModalOpen(true)
             }, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 132,
+                lineNumber: 134,
                 columnNumber: 9
             }, this);
             return null;
@@ -3910,12 +4054,12 @@ function Home() {
                         children: content
                     }, void 0, false, {
                         fileName: "[project]/pages/index.tsx",
-                        lineNumber: 156,
+                        lineNumber: 158,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/pages/index.tsx",
-                    lineNumber: 146,
+                    lineNumber: 148,
                     columnNumber: 9
                 }, this),
                 showDropZone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3946,22 +4090,22 @@ function Home() {
                         }
                     },
                     children: hoverTarget === key && hoverPlacement === 'after' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "h-full flex items-center justify-center text-xs text-blue-600 font-semibold",
+                        className: `${glassPanel} h-full flex items-center justify-center text-xs text-white/70 font-semibold border-dashed border-white/30`,
                         children: "Hier platzieren"
                     }, void 0, false, {
                         fileName: "[project]/pages/index.tsx",
-                        lineNumber: 190,
+                        lineNumber: 192,
                         columnNumber: 15
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/pages/index.tsx",
-                    lineNumber: 161,
+                    lineNumber: 163,
                     columnNumber: 11
                 }, this)
             ]
         }, key, true, {
             fileName: "[project]/pages/index.tsx",
-            lineNumber: 145,
+            lineNumber: 147,
             columnNumber: 7
         }, this);
     };
@@ -4042,7 +4186,7 @@ function Home() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Sidebar$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 275,
+                lineNumber: 281,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4052,50 +4196,89 @@ function Home() {
                         onNewInvoice: ()=>setIsModalOpen(true)
                     }, void 0, false, {
                         fileName: "[project]/pages/index.tsx",
-                        lineNumber: 278,
+                        lineNumber: 284,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "text-white",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                className: "text-3xl font-bold",
-                                children: "Dashboard"
-                            }, void 0, false, {
-                                fileName: "[project]/pages/index.tsx",
-                                lineNumber: 281,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-sm text-white/80",
-                                children: "Behalte Umsatz, Zahlen und Trends in einem Liquid-Glass-Cockpit im Blick."
-                            }, void 0, false, {
-                                fileName: "[project]/pages/index.tsx",
-                                lineNumber: 282,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
+                        className: "grid gap-4 md:grid-cols-3",
+                        children: (()=>{
+                            const activeModals = [
+                                isModalOpen,
+                                isCustomerModalOpen,
+                                isExpenseModalOpen
+                            ].filter(Boolean).length;
+                            const heroCards = [
+                                {
+                                    label: 'Widgets',
+                                    value: `${order.length}`,
+                                    meta: 'Individuell anordnen'
+                                },
+                                {
+                                    label: 'Refresh-Zyklen',
+                                    value: `${refreshKey}`,
+                                    meta: 'Datenaktualisierungen'
+                                },
+                                {
+                                    label: 'Modale offen',
+                                    value: `${activeModals}`,
+                                    meta: 'Schnellaktionen'
+                                }
+                            ];
+                            return heroCards.map((card)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: heroCardClass,
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-xs uppercase tracking-wider text-white/60",
+                                            children: card.label
+                                        }, void 0, false, {
+                                            fileName: "[project]/pages/index.tsx",
+                                            lineNumber: 297,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-3xl font-bold text-white mt-2",
+                                            children: card.value
+                                        }, void 0, false, {
+                                            fileName: "[project]/pages/index.tsx",
+                                            lineNumber: 298,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-xs text-white/60 mt-1",
+                                            children: card.meta
+                                        }, void 0, false, {
+                                            fileName: "[project]/pages/index.tsx",
+                                            lineNumber: 299,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, card.label, true, {
+                                    fileName: "[project]/pages/index.tsx",
+                                    lineNumber: 296,
+                                    columnNumber: 15
+                                }, this));
+                        })()
+                    }, void 0, false, {
                         fileName: "[project]/pages/index.tsx",
-                        lineNumber: 280,
+                        lineNumber: 286,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "rounded-3xl border border-white/30 bg-white/10 shadow-[0_25px_70px_rgba(15,23,42,0.45)] backdrop-blur-2xl p-6",
+                        className: `${glassPanel} p-6`,
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$DashboardCards$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                             refreshTrigger: refreshKey
                         }, void 0, false, {
                             fileName: "[project]/pages/index.tsx",
-                            lineNumber: 286,
+                            lineNumber: 306,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/pages/index.tsx",
-                        lineNumber: 285,
+                        lineNumber: 305,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "rounded-3xl border border-white/20 bg-white/5 shadow-[0_30px_80px_rgba(15,23,42,0.55)] backdrop-blur-2xl p-6",
+                        className: `${glassPanel} p-6`,
                         style: {
                             display: 'grid',
                             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -4137,16 +4320,16 @@ function Home() {
                                                         }
                                                     },
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "bg-gray-200 border-2 border-dashed border-gray-400 rounded h-40 flex items-center justify-center text-gray-600 font-semibold",
+                                                        className: `${glassPanel} h-40 flex items-center justify-center text-gray-200 text-xs font-semibold border-dashed border-white/40`,
                                                         children: "Hier platzieren"
                                                     }, void 0, false, {
                                                         fileName: "[project]/pages/index.tsx",
-                                                        lineNumber: 328,
+                                                        lineNumber: 348,
                                                         columnNumber: 27
                                                     }, this)
                                                 }, "placeholder", false, {
                                                     fileName: "[project]/pages/index.tsx",
-                                                    lineNumber: 317,
+                                                    lineNumber: 337,
                                                     columnNumber: 25
                                                 }, this);
                                             }
@@ -4160,13 +4343,13 @@ function Home() {
                         })()
                     }, void 0, false, {
                         fileName: "[project]/pages/index.tsx",
-                        lineNumber: 289,
+                        lineNumber: 309,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 277,
+                lineNumber: 283,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$InvoiceModal$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -4175,7 +4358,7 @@ function Home() {
                 onSave: handleSaveInvoice
             }, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 344,
+                lineNumber: 368,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CustomerModal$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -4184,7 +4367,7 @@ function Home() {
                 onSave: handleSaveCustomer
             }, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 345,
+                lineNumber: 369,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ExpenseModal$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -4193,13 +4376,13 @@ function Home() {
                 onSave: handleSaveExpense
             }, void 0, false, {
                 fileName: "[project]/pages/index.tsx",
-                lineNumber: 346,
+                lineNumber: 370,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/pages/index.tsx",
-        lineNumber: 268,
+        lineNumber: 274,
         columnNumber: 5
     }, this);
 }

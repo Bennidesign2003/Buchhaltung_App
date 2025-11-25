@@ -6,6 +6,10 @@ import { useEffect, useState } from 'react'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
+const chartTextColor = '#e2e8f0'
+const tooltipBg = 'rgba(15,23,42,0.85)'
+const tooltipBorder = 'rgba(226,232,240,0.35)'
+
 const colors = [
   '#3b82f6', // blue - Material
   '#8b5cf6', // purple - Personal
@@ -73,10 +77,16 @@ export default function ExpensesDistributionChart({ refreshKey }: { refreshKey?:
         labels: {
           font: { size: 12 },
           padding: 10,
-          boxWidth: 12
+          boxWidth: 12,
+          color: chartTextColor
         }
       },
       tooltip: {
+        backgroundColor: tooltipBg,
+        borderColor: tooltipBorder,
+        borderWidth: 1,
+        bodyColor: chartTextColor,
+        titleColor: chartTextColor,
         callbacks: {
           label: function (context: any) {
             const value = Number(context.parsed).toFixed(2)
